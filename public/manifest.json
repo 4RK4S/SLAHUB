@@ -1,0 +1,22 @@
+{
+  "name": "SLA Hub",
+  "short_name": "SLA Hub",
+  "description": "Solo Leveling: ARISE hub",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#22242a",
+  "theme_color": "#22242a",
+  "icons": [
+    {
+      "src": "/picture/Logo_app.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/picture/Logo_app.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

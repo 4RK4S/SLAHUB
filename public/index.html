@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en" class="h-full dark sla-route-booting">
+<head>
+  <script>
+    document.documentElement.classList.add("sla-route-booting");
+  </script>
+  <style id="sla-route-boot-css-inline">
+    html.sla-route-booting,
+    html.sla-route-booting body {
+      background: #050505 !important;
+    }
+    html.sla-route-booting body #app,
+    html.sla-route-booting body #content,
+    html.sla-route-booting body main,
+    html.sla-route-booting body header,
+    html.sla-route-booting body aside {
+      visibility: hidden !important;
+    }
+    html.sla-route-booting body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 2147483000;
+      background: #050505;
+      pointer-events: none;
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    (function () {
+      window.tailwind = window.tailwind || {};
+      tailwind.config = {
+        darkMode: 'class'
+      };
+
+      const root = document.documentElement;
+      root.classList.remove('light');
+      root.classList.add('dark');
+      root.dataset.theme = 'dark';
+
+      try {
+        localStorage.setItem('theme', 'dark');
+        localStorage.setItem('color-theme', 'dark');
+        sessionStorage.setItem('theme', 'dark');
+      } catch (e) {}
+    })();
+  </script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SLA Hub</title>
+
+  <!-- ✅ SPEED: Cloudinary faster connection -->
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+  <link rel="dns-prefetch" href="https://res.cloudinary.com">
+
+  <!-- ✅ SPEED: Preload background (first paint faster) -->
+  <link rel="preload" as="image" href="/picture/Page_BG.jpg" />
+
+  <!-- ✅ FAVICON (tab icon) -->
+  <link rel="icon" type="image/png" href="/picture/Logo_small.png" />
+  <link rel="apple-touch-icon" href="/picture/Logo_small.png" />
+  <link rel="manifest" href="/manifest.json">
+
+  <meta name="theme-color" content="#22242a" />
+  <meta name="color-scheme" content="dark" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+
+  <style>
+    :root{
+      color-scheme: dark;
+      --sla-primary-clr: #facc15;
+      --sla-primary-clr-2: #f59e0b;
+    }
+
+    html, body{
+      background-color:#22242a;
+      height: 100%;
+      color-scheme: dark;
+    }
+
+    /* =========================
+       GLOBAL CUSTOM SCROLLBAR
+       ========================= */
+
+    html, body, * {
+      scrollbar-width: auto;
+      scrollbar-color: #facc15 #0f172a;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 16px;
+      height: 16px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+      border-left: 1px solid rgba(250, 204, 21, 0.18);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #facc15;
+      border-radius: 999px;
+      border: 3px solid #0f172a;
+      min-height: 48px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #fde047;
+    }
+    
+    ::-webkit-scrollbar-thumb:active {
+      background: #eab308;
+    }
+    
+    ::-webkit-scrollbar-corner {
+      background: #0f172a;
+    }
+
+    body{
+      position: relative;
+      overflow-x: hidden;
+      min-height: 100vh;
+
+      padding-top: 74px;
+      padding-bottom: 0;
+      padding-left: 259px;
+      transition: padding-left 260ms ease-in-out;
+    }
+
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+
+      background-color:#22242a;
+      background-image: url("/picture/Page_BG.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    #app{
+      position: relative;
+      z-index: 1;
+    }
+
+    a{
+      text-decoration:none;
+      color: inherit;
+    }
+
+    .sla-navbtn{
+      transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+    }
+
+    .sla-navlabel{
+      max-width: 260px;
+      opacity: 1;
+      margin-left: 0.5rem;
+      transition: max-width 220ms ease, opacity 160ms ease, margin-left 220ms ease;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    body.sla-collapsed .sla-navlabel{
+      max-width: 0;
+      opacity: 0;
+      margin-left: 0;
+    }
+
+    body.sla-collapsed .sla-navbtn{
+      justify-content: center;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    body.sla-collapsed .sla-iconSlot{
+      width: 100%;
+      justify-content: center;
+    }
+
+    .gold-title{
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .bg-glass{
+      background: rgba(15, 23, 42, .55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .thin-gold-line{
+      height: 1px;
+      background: rgba(234, 179, 8, .35);
+    }
+
+    .stat-card{
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      will-change: transform;
+    }
+
+    .stat-card:hover{
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 40px #00000080, 0 0 0 1px rgba(233,210,1,.30), inset 0 1px rgba(255,255,255,.10);
+      border-color: rgba(233,210,1,.55);
+    }
+
+    @media (max-width: 767px){
+      body{
+        padding-left: 0 !important;
+      }
+    }
+
+    .sla-burger{
+      position: relative;
+      display: inline-block;
+      width: 22px;
+      height: 16px;
+    }
+
+    .sla-burger-line{
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #ffffff;
+      border-radius: 999px;
+      transition: transform .22s ease, top .22s ease, opacity .18s ease;
+    }
+
+    .sla-burger-top{ top: 0; }
+    .sla-burger-mid{ top: 7px; }
+    .sla-burger-bot{ top: 14px; }
+
+    #toggleSidebar.is-open .sla-burger-top{
+      top: 7px;
+      transform: rotate(45deg);
+    }
+
+    #toggleSidebar.is-open .sla-burger-mid{
+      opacity: 0;
+    }
+
+    #toggleSidebar.is-open .sla-burger-bot{
+      top: 7px;
+      transform: rotate(-45deg);
+    }
+
+    /* =========================
+       TOP SCROLL PROGRESS BAR
+       ========================= */
+    #scroll-progress{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      z-index: 10000;
+      pointer-events: none;
+      background: linear-gradient(90deg, var(--sla-primary-clr), #ffd700);
+      box-shadow: 0 0 8px rgba(250, 204, 21, 0.45);
+      transition: width .1s ease-out;
+    }
+
+    /* =========================
+       SCROLL TO TOP BUTTON
+       ========================= */
+    #scrollToTopBtn{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1px solid rgba(234, 179, 8, 0.35);
+
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+
+      color: rgb(250, 204, 21);
+      box-shadow: 0 8px 30px rgba(0,0,0,.35), inset 0 1px rgba(255,255,255,.06);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px) scale(.96);
+      pointer-events: none;
+
+      transition:
+        opacity .2s ease,
+        visibility .2s ease,
+        transform .2s ease,
+        background-color .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+    }
+
+    #scrollToTopBtn:hover{
+      background: rgba(30, 41, 59, 0.88);
+      border-color: rgba(250, 204, 21, 0.6);
+      box-shadow: 0 10px 34px rgba(0,0,0,.45), 0 0 0 1px rgba(250,204,21,.12);
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    #scrollToTopBtn:active{
+      transform: translateY(0) scale(.98);
+    }
+
+    #scrollToTopBtn.is-visible{
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    #scrollToTopBtn i{
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    @media (max-width: 767px){
+      #scrollToTopBtn{
+        right: 14px;
+        bottom: 14px;
+        width: 42px;
+        height: 42px;
+      }
+
+      #scroll-progress{
+        height: 3px;
+      }
+    }
+  </style>
+</head>
+
+<body class="h-full min-h-screen text-slate-100 bg-slate-900 dark">
+  <div id="scroll-progress"></div>
+
+  <div id="app"></div>
+
+  <button id="scrollToTopBtn" type="button" aria-label="Scroll to top" title="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <script>
+    window.ASSET_VER = "0.00971";
+    window.SLA_THEME = "dark";
+  </script>
+
+  <script>
+    (function () {
+      if (!('serviceWorker' in navigator)) return;
+
+      window.addEventListener('load', async () => {
+        const candidates = [
+          { url: '/service-worker.js', scope: '/' }
+        ];
+        const firstPathSegment = String(window.location.pathname || '')
+          .split('/')
+          .filter(Boolean)[0];
+
+        if (firstPathSegment) {
+          candidates.push({
+            url: `/${firstPathSegment}/service-worker.js`,
+            scope: `/${firstPathSegment}/`
+          });
+        }
+
+        for (const candidate of candidates) {
+          try {
+            await navigator.serviceWorker.register(candidate.url, { scope: candidate.scope });
+            break;
+          } catch (e) {
+            if (candidate === candidates[candidates.length - 1]) {
+              console.warn('[pwa] service worker registration failed', e);
+            }
+          }
+        }
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+
+      function forceDark() {
+        root.classList.remove('light');
+        root.classList.add('dark');
+        root.dataset.theme = 'dark';
+
+        document.body && document.body.classList.add('dark');
+
+        try {
+          localStorage.setItem('theme', 'dark');
+          localStorage.setItem('color-theme', 'dark');
+          sessionStorage.setItem('theme', 'dark');
+        } catch (e) {}
+      }
+
+      forceDark();
+
+      const observer = new MutationObserver(() => {
+        if (!root.classList.contains('dark') || root.classList.contains('light')) {
+          forceDark();
+        }
+      });
+
+      observer.observe(root, {
+        attributes: true,
+        attributeFilter: ['class', 'data-theme']
+      });
+
+      window.forceDarkMode = forceDark;
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const ver = window.ASSET_VER || "0.000";
+      const files = [
+        "/Main.js",
+        "/LogIn.js",
+        "/app.js"
+      ];
+
+      for (const file of files) {
+        const s = document.createElement("script");
+        s.defer = true;
+        s.src = `${file}?v=${encodeURIComponent(ver)}`;
+        document.body.appendChild(s);
+      }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const progressBar = document.getElementById("scroll-progress");
+      if (!progressBar) return;
+
+      function updateScrollProgress() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+        if (docHeight <= 0) {
+          progressBar.style.width = "0%";
+          return;
+        }
+
+        const progress = (scrollTop / docHeight) * 100;
+        progressBar.style.width = `${progress}%`;
+      }
+
+      window.addEventListener("scroll", updateScrollProgress, { passive: true });
+      window.addEventListener("resize", updateScrollProgress);
+      window.addEventListener("load", updateScrollProgress);
+
+      updateScrollProgress();
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const btn = document.getElementById("scrollToTopBtn");
+      if (!btn) return;
+
+      const SHOW_AFTER = 280;
+
+      const toggleBtn = () => {
+        const y = window.scrollY || document.documentElement.scrollTop || 0;
+        btn.classList.toggle("is-visible", y > SHOW_AFTER);
+      };
+
+      window.addEventListener("scroll", toggleBtn, { passive: true });
+      window.addEventListener("load", toggleBtn);
+
+      btn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

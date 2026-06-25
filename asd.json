@@ -1,0 +1,3482 @@
+{
+  "schemaVersion": 2,
+  "kind": "specialCommissionTemplate",
+  "exportedAt": "2026-01-11T22:25:38.218Z",
+  "payload": {
+    "enemies": [
+      {
+        "id": "goblin_spellcaster",
+        "name": "Goblin Spellcaster",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Goblin_Spellcaster.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "elite_goblin_fighter",
+        "name": "Elite Goblin/Fighter",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Elite_Goblin_Fighter.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "blue_fang_razan",
+        "name": "Blue Fang Razan",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Blue_Fang_Razan.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "black_helmet_jackal",
+        "name": "Black Helmet/Jackal",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Black_Helmet_Jackal.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "steel_clawed_briga",
+        "name": "Steel-clawed Briga",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Steel-clawed_Briga.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "blue_lizardman",
+        "name": "Blue Lizardman",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Blue_Lizardman.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "cold_blooded_hobgoblin",
+        "name": "Cold-blooded/Hobgoblin",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Cold-blooded_Hobgoblin.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "mad_hobgoblin",
+        "name": "Mad Hobgoblin",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Mad_Hobgoblin.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "volcanic_rock_golem",
+        "name": "Volcanic Rock/Golem",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Volcanic_Rock_Golem.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "shadowy_cave_bear",
+        "name": "Shadowy Cave/Bear",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Shadowy_Cave_Bear.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "shadow_of_trials_proctor",
+        "name": "Shadow of Trials/Proctor",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Shadow_of_Trials_Proctor.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "wild_werewolf",
+        "name": "Wild Werewolf",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Wild_Werewolf.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "spider_leader",
+        "name": "Spider Leader",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Spider_Leader.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "blue_poison_scorpion",
+        "name": "Blue Poison/Scorpion",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Blue_Poison_Scorpion.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "holy_giant_knight_golem",
+        "name": "Holy Giant Knight/Golem",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Holy_Giant_Knight_Golem.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "undead_knight",
+        "name": "Undead Knight",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Undead_Knight.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "burning_low_demon",
+        "name": "Burning Low/Demon",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Burning_Low_Demon.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "shadow_of_trials_leader",
+        "name": "Shadow of Trials/Leader",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Shadow_of_Trials_Leader.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "violent_cave_bear",
+        "name": "Violent Cave/Bear",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Violent_Cave_Bear.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "alpha_cave_bear",
+        "name": "Alpha Cave/Bear",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Alpha_Cave_Bear.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "burning_top_ranking_demon",
+        "name": "Burning/Top-ranking Demon",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Burning_Top-ranking_Demon.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "burning_high_demon",
+        "name": "Burning High/Demon",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Burning_High_Demon.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "1st_gen_fire_ant_leader",
+        "name": "1st Gen. Fire Ant/Leader",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/1st_Gen._Fire_Ant_Leader.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "undead_knight_eldhelm",
+        "name": "Undead Knight/Eldhelm",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Undead_Knight_Eldhelm.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "checkmate_kysa",
+        "name": "Checkmate Kysa",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Checkmate_Kysa.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "caustic_punisher_forthion",
+        "name": "Caustic Punisher/Forthion",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Caustic_Punisher_Forthion.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "ice_elf_guard_captain",
+        "name": "Ice Elf Guard/Captain",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Ice_Elf_Guard_Captain.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "ice_elf_scout_captain",
+        "name": "Ice Elf Scout/Captain",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Ice_Elf_Scout_Captain.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "red_eyed_ice_bear",
+        "name": "Red-eyed Ice/Bear",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Red-eyed_Ice_Bear.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "macaque",
+        "name": "Macaque",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Macaque.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "hobgoblin_leader",
+        "name": "Hobgoblin Leader",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Hobgoblin_Leader.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "burning_mid_demon",
+        "name": "Burning Mid/Demon",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Burning_Mid_Demon.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "ice_bear_alpha",
+        "name": "Ice Bear Alpha",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Ice_Bear_Alpha.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "red_mane_lycan",
+        "name": "Red Mane Lycan",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Red_Mane_Lycan.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "blue_mane_lycan",
+        "name": "Blue Mane Lycan",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Blue_Mane_Lycan.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "high_orc_warden",
+        "name": "High Orc Warden",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/High_Orc_Warden.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "demon_general",
+        "name": "Demon General",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Demon_General.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "sodalite_mandrill",
+        "name": "Sodalite Mandrill",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Sodalite_Mandrill.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "blue_spirit_golem",
+        "name": "Blue Spirit/Golem",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Blue_Spirit_Golem.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "giant_arachnid",
+        "name": "Giant Arachnid",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Giant_Arachnid.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "purple_blade_camula",
+        "name": "Purple Blade/Camula",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Purple_Blade_Camula.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "high_orc_butcher",
+        "name": "High Orc Butcher",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/High_Orc_Butcher.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "high_orc_headman",
+        "name": "High Orc Headman",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/High_Orc_Headman.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "high_orc_spellmaster",
+        "name": "High Orc/Spellmaster",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/High_Orc_Spellmaster.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "giant_desert_centipede",
+        "name": "Giant Desert/Centipede",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Giant_Desert_Centipede.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "1st_gen_white_ant_leader",
+        "name": "1st Gen. White Ant/Leader",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/1st_Gen._White_Ant_Leader.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "baruka",
+        "name": "Baruka",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Baruka.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "poison_toothed_giant_desert_centipede",
+        "name": "Poison-toothed Giant/Desert Centipede",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Poison-toothed_Giant_Desert_Centipede.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "wolf_shepherd_roke",
+        "name": "Wolf Shepherd/Roke",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Wolf_Shepherd_Roke.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "chilling_frozen_stone_guardian",
+        "name": "Chilling Frozen/Stone Guardian",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Chilling_Frozen_Stone_Guardian.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "igris_the_red",
+        "name": "Igris the Red",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Igris_the_Red.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "blue_venom_fanged_kasaka",
+        "name": "Blue Venom-fanged/Kasaka",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Blue_Venom-fanged_Kasaka.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "fores",
+        "name": "Fores",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Fores.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "the_gatekeeper_of_hell_cerberus",
+        "name": "The Gatekeeper of/Hell, Cerberus",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/The_Gatekeeper_of_Hell_Cerberus.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "gatekeeper_of_the_abyss_cerberus",
+        "name": "Gatekeeper of the/Abyss, Cerberus",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Gatekeeper_of_the_Abyss_Cerberus.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "prodeon_the_blooming_red_flame",
+        "name": "Prodeon, the/Blooming Red Flame",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Prodeon_the_Blooming_Red_Flame.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "creon_the_twisted_rift",
+        "name": "Creon, the Twisted/Rift",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Creon_the_Twisted_Rift.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "brunners_the_endless_hellfire",
+        "name": "Brunners, the/Endless Hellfire",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Brunners_the_Endless_Hellfire.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "lavillette_the_scorched_earth",
+        "name": "Lavillette, the/Scorched Earth",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Lavillette_the_Scorched_Earth.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "avaricious_vulcan",
+        "name": "Avaricious Vulcan",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Avaricious_Vulcan.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "scorching_lava_stone_guardian",
+        "name": "Scorching Lava/Stone Guardian",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Scorching_Lava_Stone_Guardian.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "pursuing_death_stalker",
+        "name": "Pursuing Death/Stalker",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Pursuing_Death_Stalker.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "almighty_shaman_kargalgan",
+        "name": "Almighty Shaman,/Kargalgan",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Almighty_Shaman_Kargalgan.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "cursed_giant_eiberg",
+        "name": "Cursed Giant/Eiberg",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Cursed_Giant_Eiberg.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "kaisellin",
+        "name": "Kaisellin",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Kaisellin.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "ice_witch_beste",
+        "name": "Ice Witch/Beste",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Ice_Witch_Beste.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "soul_shepherd_metus",
+        "name": "Soul Shepherd,/Metus",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Soul_Shepherd_Metus.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "esil_radiru",
+        "name": "Esil Radiru",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Esil_Radiru.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "baran_of_white_flames",
+        "name": "Baran of White/Flames",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Baran_of_White_Flames.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "baran_the_demon_king",
+        "name": "Baran, the Demon/King",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Baran_the_Demon_King.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "twin_headed_ogre",
+        "name": "Twin-headed Ogre",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Twin-headed_Ogre.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "watcher_of_brilliant_light_luxis",
+        "name": "Watcher of Brilliant/Light Luxis",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Watcher_of_Brilliant_Light_Luxis.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "arch_lich_the_master_of_twilight",
+        "name": "Arch Lich, the/Master of Twilight",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Arch_Lich_the_Master_of_Twilight.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "judge_of_death_deimos",
+        "name": "Judge of Death,/Deimos",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Judge_of_Death_Deimos.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "deimos_the_commander_of_transfiguration",
+        "name": "Deimos, the Commander/of Transfiguration",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Deimos_the_Commander_of_Transfiguration.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "enchanting_apex_bedelia",
+        "name": "Enchanting Apex/Bedelia",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Enchanting_Apex_Bedelia.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "soul_executioner_davorka",
+        "name": "Soul Executioner/Davorka",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Soul_Executioner_Davorka.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "monarch_of_transfiguration_yogumunt",
+        "name": "Monarch of Transfiguration/Yogumunt",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Monarch_of_Transfiguration_Yogumunt.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "the_ant_king",
+        "name": "The Ant King",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/The_Ant_King.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "desert_sand_stone_guardian",
+        "name": "Desert Sand Stone/Guardian",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Desert_Sand_Stone_Guardian.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "stone_guardian",
+        "name": "Stone Guardian",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Stone_Guardian.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "eternal_flame_caiman",
+        "name": "Eternal Flame/Caiman",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Eternal_Flame_Caiman.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "lava_fang_razan",
+        "name": "Lava Fang Razan",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Lava_Fang_Razan.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "shadowy_ice_bear",
+        "name": "Shadowy Ice/Bear",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Shadowy_Ice_Bear.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "ferocious_ice_bear",
+        "name": "Ferocious Ice/Bear",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Ferocious_Ice_Bear.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "forest_guardian_centaur",
+        "name": "Forest Guardian/Centaur",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Forest_Guardian_Centaur.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "murk_werewolf",
+        "name": "Murk Werewolf",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Murk_Werewolf.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "warding_soul_harvester",
+        "name": "Warding Soul/Harvester",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Warding_Soul_Harvester.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "cave_rock_golem",
+        "name": "Cave Rock/Golem",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Cave_Rock_Golem.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "white_flames_knight_captain",
+        "name": "White Flames/Knight Captain",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/White_Flames_Knight_Captain.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "ebon_lizardman",
+        "name": "Ebon Lizardman",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Ebon_Lizardman.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "white_helmet_jackal",
+        "name": "White Helmet/Jackal",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/White_Helmet_Jackal.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "red_blade_orc_warden",
+        "name": "Red Blade Orc/Warden",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Red_Blade_Orc_Warden.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "red_blade_orc_butcher",
+        "name": "Red Blade Orc/Butcher",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Red_Blade_Orc_Butcher.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "red_blade_orc_spellmaster",
+        "name": "Red Blade Orc/Spellmaster",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Red_Blade_Orc_Spellmaster.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "3rd_gen_ant_leader",
+        "name": "3rd Gen. Ant/Leader",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/3rd_Gen._Ant_Leader.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "3rd_gen_white_ant_leader",
+        "name": "3rd Gen. White Ant/Leader",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/3rd_Gen._White_Ant_Leader.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "higos",
+        "name": "Higos",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Higos.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "shadow_of_flames_incario",
+        "name": "Shadow of Flames/Incario",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Shadow_of_Flames_Incario.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "helder_destroyer_of_blazing_flames",
+        "name": "Helder, Destroyer/of Blazing Flames",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Helder_Destroyer_of_Blazing_Flames.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "katell_the_guide_of_death",
+        "name": "Katell, the Guide/of Death",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Katell_the_Guide_of_Death.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "quirke_the_malevolent_heart",
+        "name": "Quirke, the/Malevolent Heart",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Quirke_the_Malevolent_Heart.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "winter_frost_wolf_nadan",
+        "name": "Winter Frost Wolf/Nadan",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Winter_Frost_Wolf_Nadan.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "lanor_the_dominated_recluse",
+        "name": "Lanor, the/Dominated Recluse",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Lanor_the_Dominated_Recluse.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "kargot_the_dominated_leader",
+        "name": "Kargot, the/Dominated Leader",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Kargot_the_Dominated_Leader.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      },
+      {
+        "id": "valtair_the_commander_of_arrogance",
+        "name": "Valtair, the Commander/of Arrogance",
+        "iconUrl": "https://res.cloudinary.com/dmfww0zt8/image/upload/v1768081820/SLA/Special_Commission/Valtair_the_Commander_of_Arrogance.png",
+        "maxLevel": 5,
+        "levelMax": {
+          "0": 15,
+          "1": 40,
+          "2": 85,
+          "3": 140,
+          "4": 200,
+          "5": 0
+        },
+        "level": 0,
+        "cur": 0
+      }
+    ],
+    "locations": [
+      {
+        "id": "loc_gate_normal_gate_s",
+        "category": "Gate",
+        "name": "Normal Gate S"
+      },
+      {
+        "id": "loc_gate_normal_gate_a",
+        "category": "Gate",
+        "name": "Normal Gate A"
+      },
+      {
+        "id": "loc_gate_normal_gate_b",
+        "category": "Gate",
+        "name": "Normal Gate B"
+      },
+      {
+        "id": "loc_gate_normal_gate_c",
+        "category": "Gate",
+        "name": "Normal Gate C"
+      },
+      {
+        "id": "loc_gate_red_gate_s",
+        "category": "Gate",
+        "name": "Red Gate S"
+      },
+      {
+        "id": "loc_gate_red_gate_a",
+        "category": "Gate",
+        "name": "Red Gate A"
+      },
+      {
+        "id": "loc_gate_red_gate_b",
+        "category": "Gate",
+        "name": "Red Gate B"
+      },
+      {
+        "id": "loc_gate_dungeon_break_s",
+        "category": "Gate",
+        "name": "Dungeon Break S"
+      },
+      {
+        "id": "loc_gate_dungeon_break_a",
+        "category": "Gate",
+        "name": "Dungeon Break A"
+      },
+      {
+        "id": "loc_gate_dungeon_break_b",
+        "category": "Gate",
+        "name": "Dungeon Break B"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_1",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 1"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_2",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 2"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_3",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 3"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_4",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 4"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_5",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 5"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_6",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 6"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_7",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 7"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_8",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 8"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_9",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 9"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_10",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 10"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_11",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 11"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_12",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 12"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_13",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 13"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_14",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 14"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_15",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 15"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_16",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 16"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_17",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 17"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_18",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 18"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_19",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 19"
+      },
+      {
+        "id": "loc_boc_fortress_of_blazing_fire_rank_20",
+        "category": "Battlefield of Chaos",
+        "name": "Fortress of Blazing Fire Rank 20"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_1",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 1"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_2",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 2"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_3",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 3"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_4",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 4"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_5",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 5"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_6",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 6"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_7",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 7"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_8",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 8"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_9",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 9"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_10",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 10"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_11",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 11"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_12",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 12"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_13",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 13"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_14",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 14"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_15",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 15"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_16",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 16"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_17",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 17"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_18",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 18"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_19",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 19"
+      },
+      {
+        "id": "loc_boc_battlefield_of_dawn_rank_20",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of Dawn Rank 20"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_1",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 1"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_2",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 2"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_3",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 3"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_4",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 4"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_5",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 5"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_6",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 6"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_7",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 7"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_8",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 8"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_9",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 9"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_10",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 10"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_11",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 11"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_12",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 12"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_13",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 13"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_14",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 14"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_15",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 15"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_16",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 16"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_17",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 17"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_18",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 18"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_19",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 19"
+      },
+      {
+        "id": "loc_boc_barren_wilderness_rank_20",
+        "category": "Battlefield of Chaos",
+        "name": "Barren Wilderness Rank 20"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_1",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 1"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_2",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 2"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_3",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 3"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_4",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 4"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_5",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 5"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_6",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 6"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_7",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 7"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_8",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 8"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_9",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 9"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_10",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 10"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_11",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 11"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_12",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 12"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_13",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 13"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_14",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 14"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_15",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 15"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_16",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 16"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_17",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 17"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_18",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 18"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_19",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 19"
+      },
+      {
+        "id": "loc_boc_battlefield_of_the_dead_rank_20",
+        "category": "Battlefield of Chaos",
+        "name": "Battlefield of the Dead Rank 20"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_1",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 1"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_2",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 2"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_3",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 3"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_4",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 4"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_5",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 5"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_6",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 6"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_7",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 7"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_8",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 8"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_9",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 9"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_10",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 10"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_11",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 11"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_12",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 12"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_13",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 13"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_14",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 14"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_15",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 15"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_16",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 16"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_17",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 17"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_18",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 18"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_19",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 19"
+      },
+      {
+        "id": "loc_boc_tyrian_ruins_rank_20",
+        "category": "Battlefield of Chaos",
+        "name": "Tyrian Ruins Rank 20"
+      },
+      {
+        "id": "loc_sl_lee_johee",
+        "category": "Secret Library",
+        "name": "Lee Johee"
+      },
+      {
+        "id": "loc_sl_cha_hae_in",
+        "category": "Secret Library",
+        "name": "Cha Hae-In"
+      },
+      {
+        "id": "loc_sl_park_heejin",
+        "category": "Secret Library",
+        "name": "Park Heejin"
+      },
+      {
+        "id": "loc_sl_seo_jiwoo",
+        "category": "Secret Library",
+        "name": "Seo Jiwoo"
+      },
+      {
+        "id": "loc_sl_yoo_soohyun",
+        "category": "Secret Library",
+        "name": "Yoo Soohyun"
+      },
+      {
+        "id": "loc_sl_baek_yoonho",
+        "category": "Secret Library",
+        "name": "Baek Yoonho"
+      },
+      {
+        "id": "loc_sl_amamiya_mirei",
+        "category": "Secret Library",
+        "name": "Amamiya Mirei"
+      },
+      {
+        "id": "loc_sl_emma_laurent",
+        "category": "Secret Library",
+        "name": "Emma Laurent"
+      },
+      {
+        "id": "loc_sl_go_gunhee",
+        "category": "Secret Library",
+        "name": "Go Gunhee"
+      },
+      {
+        "id": "loc_sl_han_se_mi",
+        "category": "Secret Library",
+        "name": "Han Se-Mi"
+      },
+      {
+        "id": "loc_sl_charlotte",
+        "category": "Secret Library",
+        "name": "Charlotte"
+      },
+      {
+        "id": "loc_sl_harper",
+        "category": "Secret Library",
+        "name": "Harper"
+      },
+      {
+        "id": "loc_sl_gina",
+        "category": "Secret Library",
+        "name": "Gina"
+      },
+      {
+        "id": "loc_sl_isla_wright",
+        "category": "Secret Library",
+        "name": "Isla Wright"
+      },
+      {
+        "id": "loc_sl_thomas_andre",
+        "category": "Secret Library",
+        "name": "Thomas Andre"
+      },
+      {
+        "id": "loc_sl_shimizu_akari",
+        "category": "Secret Library",
+        "name": "Shimizu Akari"
+      },
+      {
+        "id": "loc_sl_esil_radiru",
+        "category": "Secret Library",
+        "name": "Esil Radiru"
+      },
+      {
+        "id": "loc_sl_tawata_kanae",
+        "category": "Secret Library",
+        "name": "Tawata Kanae"
+      },
+      {
+        "id": "loc_sl_goto_ryuji",
+        "category": "Secret Library",
+        "name": "Goto Ryuji"
+      },
+      {
+        "id": "loc_sl_seorin",
+        "category": "Secret Library",
+        "name": "Seorin"
+      },
+      {
+        "id": "loc_sl_cha_hae_in_the_pure_sword_princess",
+        "category": "Secret Library",
+        "name": "Cha Hae-In, the Pure Sword Princess"
+      },
+      {
+        "id": "loc_sl_lennart_niermann",
+        "category": "Secret Library",
+        "name": "Lennart Niermann"
+      },
+      {
+        "id": "loc_sl_miyeon_shuhua",
+        "category": "Secret Library",
+        "name": "MIYEON / SHUHUA"
+      },
+      {
+        "id": "loc_sl_sung_jinah",
+        "category": "Secret Library",
+        "name": "Sung Jinah"
+      },
+      {
+        "id": "loc_sl_minnie_soyeon_yuqi",
+        "category": "Secret Library",
+        "name": "MINNIE / SOYEON / YUQI"
+      },
+      {
+        "id": "loc_sl_sung_il_hwan",
+        "category": "Secret Library",
+        "name": "Sung Il-Hwan"
+      },
+      {
+        "id": "loc_sl_frieren_and_fern_and_stark",
+        "category": "Secret Library",
+        "name": "Frieren & Fern & Stark"
+      },
+      {
+        "id": "loc_sl_laura_walker",
+        "category": "Secret Library",
+        "name": "Laura Walker"
+      },
+      {
+        "id": "loc_sl_lim_tae_gyu",
+        "category": "Secret Library",
+        "name": "Lim Tae-Gyu"
+      },
+      {
+        "id": "loc_sl_christopher_reed",
+        "category": "Secret Library",
+        "name": "Christopher Reed"
+      },
+      {
+        "id": "loc_wobl_the_flames_of_vulcan",
+        "category": "Workshop of Brilliant Light",
+        "name": "The Flames of Vulcan"
+      },
+      {
+        "id": "loc_wobl_baran_the_demon_king",
+        "category": "Workshop of Brilliant Light",
+        "name": "Baran, the Demon King"
+      },
+      {
+        "id": "loc_wobl_deimos_the_commander_of_transfiguration",
+        "category": "Workshop of Brilliant Light",
+        "name": "Deimos, the Commander of Transfiguration"
+      },
+      {
+        "id": "loc_wobl_monarch_of_transfiguration_yogumunt",
+        "category": "Workshop of Brilliant Light",
+        "name": "Monarch of Transfiguration Yogumunt"
+      },
+      {
+        "id": "loc_wobl_valtair_the_commander_of_arrogance",
+        "category": "Workshop of Brilliant Light",
+        "name": "Valtair, the Commander of Arrogance"
+      },
+      {
+        "id": "loc_other_instance_dungeon",
+        "category": "Other",
+        "name": "Instance Dungeon"
+      },
+      {
+        "id": "loc_other_encore_mission",
+        "category": "Other",
+        "name": "Encore Mission"
+      }
+    ],
+    "rel": [
+      {
+        "enemyId": "1st_gen_white_ant_leader",
+        "locationId": "loc_gate_normal_gate_s",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "blue_spirit_golem",
+        "locationId": "loc_gate_normal_gate_s",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "cave_rock_golem",
+        "locationId": "loc_gate_normal_gate_s",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "high_orc_spellmaster",
+        "locationId": "loc_gate_normal_gate_s",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "high_orc_warden",
+        "locationId": "loc_gate_normal_gate_s",
+        "kills": 1,
+        "note": ""
+      },
+    
+      {
+        "enemyId": "baruka",
+        "locationId": "loc_gate_red_gate_s",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "burning_low_demon",
+        "locationId": "loc_gate_red_gate_s",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "burning_top_ranking_demon",
+        "locationId": "loc_gate_red_gate_s",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "hobgoblin_leader",
+        "locationId": "loc_gate_red_gate_s",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "wild_werewolf",
+        "locationId": "loc_gate_red_gate_s",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "wolf_shepherd_roke",
+        "locationId": "loc_gate_red_gate_s",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "mad_hobgoblin",
+        "locationId": "loc_gate_red_gate_s",
+        "kills": 1,
+        "note": ""
+      },
+    
+      {
+        "enemyId": "caustic_punisher_forthion",
+        "locationId": "loc_gate_dungeon_break_s",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "hobgoblin_leader",
+        "locationId": "loc_gate_dungeon_break_s",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "mad_hobgoblin",
+        "locationId": "loc_gate_dungeon_break_s",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "shadow_of_trials_proctor",
+        "locationId": "loc_gate_dungeon_break_s",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "wild_werewolf",
+        "locationId": "loc_gate_dungeon_break_s",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "wolf_shepherd_roke",
+        "locationId": "loc_gate_dungeon_break_s",
+        "kills": 1,
+        "note": ""
+      },
+    
+      {
+        "enemyId": "alpha_cave_bear",
+        "locationId": "loc_gate_normal_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "blue_lizardman",
+        "locationId": "loc_gate_normal_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "blue_poison_scorpion",
+        "locationId": "loc_gate_normal_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "burning_high_demon",
+        "locationId": "loc_gate_normal_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "burning_low_demon",
+        "locationId": "loc_gate_normal_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "burning_mid_demon",
+        "locationId": "loc_gate_normal_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "burning_top_ranking_demon",
+        "locationId": "loc_gate_normal_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "caustic_punisher_forthion",
+        "locationId": "loc_gate_normal_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "checkmate_kysa",
+        "locationId": "loc_gate_normal_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "demon_general",
+        "locationId": "loc_gate_normal_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "ebon_lizardman",
+        "locationId": "loc_gate_normal_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "giant_arachnid",
+        "locationId": "loc_gate_normal_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "high_orc_butcher",
+        "locationId": "loc_gate_normal_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "high_orc_warden",
+        "locationId": "loc_gate_normal_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "shadow_of_trials_leader",
+        "locationId": "loc_gate_normal_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "spider_leader",
+        "locationId": "loc_gate_normal_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "violent_cave_bear",
+        "locationId": "loc_gate_normal_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+    
+      {
+        "enemyId": "cave_rock_golem",
+        "locationId": "loc_gate_red_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "chilling_frozen_stone_guardian",
+        "locationId": "loc_gate_red_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "macaque",
+        "locationId": "loc_gate_red_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "steel_clawed_briga",
+        "locationId": "loc_gate_red_gate_a",
+        "kills": 1,
+        "note": ""
+      },
+    
+      {
+        "enemyId": "burning_low_demon",
+        "locationId": "loc_gate_dungeon_break_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "burning_mid_demon",
+        "locationId": "loc_gate_dungeon_break_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "checkmate_kysa",
+        "locationId": "loc_gate_dungeon_break_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "high_orc_spellmaster",
+        "locationId": "loc_gate_dungeon_break_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "high_orc_warden",
+        "locationId": "loc_gate_dungeon_break_a",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "shadow_of_trials_proctor",
+        "locationId": "loc_gate_dungeon_break_a",
+        "kills": 1,
+        "note": ""
+      },
+    
+      {
+        "enemyId": "1st_gen_fire_ant_leader",
+        "locationId": "loc_gate_normal_gate_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "burning_mid_demon",
+        "locationId": "loc_gate_normal_gate_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "demon_general",
+        "locationId": "loc_gate_normal_gate_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "giant_desert_centipede",
+        "locationId": "loc_gate_normal_gate_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "high_orc_headman",
+        "locationId": "loc_gate_normal_gate_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "purple_blade_camula",
+        "locationId": "loc_gate_normal_gate_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "sodalite_mandrill",
+        "locationId": "loc_gate_normal_gate_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "steel_clawed_briga",
+        "locationId": "loc_gate_normal_gate_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "undead_knight",
+        "locationId": "loc_gate_normal_gate_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "undead_knight_eldhelm",
+        "locationId": "loc_gate_normal_gate_b",
+        "kills": 1,
+        "note": ""
+      },
+    
+      {
+        "enemyId": "blue_poison_scorpion",
+        "locationId": "loc_gate_red_gate_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "ice_bear_alpha",
+        "locationId": "loc_gate_red_gate_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "macaque",
+        "locationId": "loc_gate_red_gate_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "poison_toothed_giant_desert_centipede",
+        "locationId": "loc_gate_red_gate_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "red_eyed_ice_bear",
+        "locationId": "loc_gate_red_gate_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "steel_clawed_briga",
+        "locationId": "loc_gate_red_gate_b",
+        "kills": 1,
+        "note": ""
+      },
+    
+      {
+        "enemyId": "1st_gen_fire_ant_leader",
+        "locationId": "loc_gate_dungeon_break_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "alpha_cave_bear",
+        "locationId": "loc_gate_dungeon_break_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "blue_spirit_golem",
+        "locationId": "loc_gate_dungeon_break_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "burning_high_demon",
+        "locationId": "loc_gate_dungeon_break_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "cave_rock_golem",
+        "locationId": "loc_gate_dungeon_break_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "purple_blade_camula",
+        "locationId": "loc_gate_dungeon_break_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "undead_knight",
+        "locationId": "loc_gate_dungeon_break_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "undead_knight_eldhelm",
+        "locationId": "loc_gate_dungeon_break_b",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "violent_cave_bear",
+        "locationId": "loc_gate_dungeon_break_b",
+        "kills": 1,
+        "note": ""
+      },
+    
+      {
+        "enemyId": "1st_gen_fire_ant_leader",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "black_helmet_jackal",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "blue_fang_razan",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "blue_lizardman",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "blue_poison_scorpion",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "burning_low_demon",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "cold_blooded_hobgoblin",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "elite_goblin_fighter",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "goblin_spellcaster",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "holy_giant_knight_golem",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "ice_elf_guard_captain",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "ice_elf_scout_captain",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "mad_hobgoblin",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "red_eyed_ice_bear",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "red_mane_lycan",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "shadow_of_trials_leader",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "shadow_of_trials_proctor",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "shadowy_cave_bear",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "spider_leader",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "steel_clawed_briga",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "undead_knight",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "volcanic_rock_golem",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "wild_werewolf",
+        "locationId": "loc_gate_normal_gate_c",
+        "kills": 1,
+        "note": ""
+      },
+    
+      {
+        "enemyId": "wild_werewolf",
+        "locationId": "loc_sl_lee_johee",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "undead_knight",
+        "locationId": "loc_sl_cha_hae_in",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "undead_knight_eldhelm",
+        "locationId": "loc_sl_cha_hae_in",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "steel_clawed_briga",
+        "locationId": "loc_sl_park_heejin",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "macaque",
+        "locationId": "loc_sl_park_heejin",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "mad_hobgoblin",
+        "locationId": "loc_sl_seo_jiwoo",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "high_orc_butcher",
+        "locationId": "loc_sl_yoo_soohyun",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "high_orc_headman",
+        "locationId": "loc_sl_yoo_soohyun",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "holy_giant_knight_golem",
+        "locationId": "loc_sl_baek_yoonho",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "cold_blooded_hobgoblin",
+        "locationId": "loc_sl_amamiya_mirei",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "volcanic_rock_golem",
+        "locationId": "loc_sl_emma_laurent",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "scorching_lava_stone_guardian",
+        "locationId": "loc_sl_emma_laurent",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "holy_giant_knight_golem",
+        "locationId": "loc_sl_go_gunhee",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "shadow_of_trials_proctor",
+        "locationId": "loc_sl_han_se_mi",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "caustic_punisher_forthion",
+        "locationId": "loc_sl_han_se_mi",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "wild_werewolf",
+        "locationId": "loc_sl_charlotte",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "ice_elf_guard_captain",
+        "locationId": "loc_sl_harper",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "wolf_shepherd_roke",
+        "locationId": "loc_sl_gina",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "eternal_flame_caiman",
+        "locationId": "loc_sl_isla_wright",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "eternal_flame_caiman",
+        "locationId": "loc_sl_thomas_andre",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "high_orc_warden",
+        "locationId": "loc_sl_shimizu_akari",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "high_orc_headman",
+        "locationId": "loc_sl_shimizu_akari",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "high_orc_spellmaster",
+        "locationId": "loc_sl_shimizu_akari",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "white_flames_knight_captain",
+        "locationId": "loc_sl_esil_radiru",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "blue_fang_razan",
+        "locationId": "loc_sl_tawata_kanae",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "checkmate_kysa",
+        "locationId": "loc_sl_goto_ryuji",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "lava_fang_razan",
+        "locationId": "loc_sl_seorin",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "black_helmet_jackal",
+        "locationId": "loc_sl_cha_hae_in_the_pure_sword_princess",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "forest_guardian_centaur",
+        "locationId": "loc_sl_lennart_niermann",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "elite_goblin_fighter",
+        "locationId": "loc_sl_miyeon_shuhua",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "twin_headed_ogre",
+        "locationId": "loc_sl_sung_jinah",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "ice_elf_guard_captain",
+        "locationId": "loc_sl_minnie_soyeon_yuqi",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "giant_desert_centipede",
+        "locationId": "loc_sl_frieren_and_fern_and_stark",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "3rd_gen_ant_leader",
+        "locationId": "loc_sl_lim_tae_gyu",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "forest_guardian_centaur",
+        "locationId": "loc_sl_christopher_reed",
+        "kills": 1,
+        "note": ""
+      },
+    
+      {
+        "enemyId": "valtair_the_commander_of_arrogance",
+        "locationId": "loc_wobl_valtair_the_commander_of_arrogance",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "kargot_the_dominated_leader",
+        "locationId": "loc_wobl_valtair_the_commander_of_arrogance",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "lanor_the_dominated_recluse",
+        "locationId": "loc_wobl_valtair_the_commander_of_arrogance",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "monarch_of_transfiguration_yogumunt",
+        "locationId": "loc_wobl_monarch_of_transfiguration_yogumunt",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "soul_executioner_davorka",
+        "locationId": "loc_wobl_monarch_of_transfiguration_yogumunt",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "enchanting_apex_bedelia",
+        "locationId": "loc_wobl_monarch_of_transfiguration_yogumunt",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "deimos_the_commander_of_transfiguration",
+        "locationId": "loc_wobl_deimos_the_commander_of_transfiguration",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "judge_of_death_deimos",
+        "locationId": "loc_wobl_deimos_the_commander_of_transfiguration",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "arch_lich_the_master_of_twilight",
+        "locationId": "loc_wobl_deimos_the_commander_of_transfiguration",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "baran_the_demon_king",
+        "locationId": "loc_wobl_baran_the_demon_king",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "baran_of_white_flames",
+        "locationId": "loc_wobl_baran_the_demon_king",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "esil_radiru",
+        "locationId": "loc_wobl_baran_the_demon_king",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "soul_shepherd_metus",
+        "locationId": "loc_wobl_baran_the_demon_king",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "avaricious_vulcan",
+        "locationId": "loc_wobl_the_flames_of_vulcan",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "lavillette_the_scorched_earth",
+        "locationId": "loc_wobl_the_flames_of_vulcan",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "brunners_the_endless_hellfire",
+        "locationId": "loc_wobl_the_flames_of_vulcan",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "creon_the_twisted_rift",
+        "locationId": "loc_wobl_the_flames_of_vulcan",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "prodeon_the_blooming_red_flame",
+        "locationId": "loc_wobl_the_flames_of_vulcan",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "gatekeeper_of_the_abyss_cerberus",
+        "locationId": "loc_wobl_the_flames_of_vulcan",
+        "kills": 1,
+        "note": ""
+      },
+    
+      {
+        "enemyId": "winter_frost_wolf_nadan",
+        "locationId": "loc_other_instance_dungeon",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "quirke_the_malevolent_heart",
+        "locationId": "loc_other_encore_mission",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "katell_the_guide_of_death",
+        "locationId": "loc_other_instance_dungeon",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "helder_destroyer_of_blazing_flames",
+        "locationId": "loc_other_encore_mission",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "shadow_of_flames_incario",
+        "locationId": "loc_other_encore_mission",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "higos",
+        "locationId": "loc_other_encore_mission",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "the_ant_king",
+        "locationId": "loc_other_instance_dungeon",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "watcher_of_brilliant_light_luxis",
+        "locationId": "loc_other_encore_mission",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "twin_headed_ogre",
+        "locationId": "loc_other_instance_dungeon",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "ice_witch_beste",
+        "locationId": "loc_other_instance_dungeon",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "kaisellin",
+        "locationId": "loc_other_encore_mission",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "giant_arachnid",
+        "locationId": "loc_other_encore_mission",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "poison_toothed_giant_desert_centipede",
+        "locationId": "loc_other_encore_mission",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "cursed_giant_eiberg",
+        "locationId": "loc_other_instance_dungeon",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "almighty_shaman_kargalgan",
+        "locationId": "loc_other_instance_dungeon",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "pursuing_death_stalker",
+        "locationId": "loc_other_encore_mission",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "scorching_lava_stone_guardian",
+        "locationId": "loc_other_encore_mission",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "the_gatekeeper_of_hell_cerberus",
+        "locationId": "loc_other_encore_mission",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "fores",
+        "locationId": "loc_other_encore_mission",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "blue_venom_fanged_kasaka",
+        "locationId": "loc_other_encore_mission",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "igris_the_red",
+        "locationId": "loc_other_instance_dungeon",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "blue_mane_lycan",
+        "locationId": "loc_other_instance_dungeon",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "red_mane_lycan",
+        "locationId": "loc_other_instance_dungeon",
+        "kills": 1,
+        "note": ""
+      },
+      {
+        "enemyId": "hobgoblin_leader",
+        "locationId": "loc_other_instance_dungeon",
+        "kills": 1,
+        "note": ""
+      }
+    ]
+  }
+}
