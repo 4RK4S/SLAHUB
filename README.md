@@ -1,6 +1,18 @@
-# SLA Hub
+﻿# SLA Hub
 
-SLA Hub to aplikacja Node.js/Express ze statycznym frontendem w `public`, API w `routes/api.js` i lokalna baza SQLite obslugiwana przez `better-sqlite3`. Projekt zawiera panele, katalogi, posty, logowanie Discord OAuth oraz zasoby graficzne w katalogu `picture`.
+SLA Hub to aplikacja webowa dla spolecznosci Solo Leveling: ARISE. Projekt laczy statyczny frontend, backend Express, logowanie przez Discord OAuth i lokalna baze SQLite. Strona sluzy jako hub z poradnikami, katalogami, buildami, postami i narzedziami pomocniczymi dla graczy.
+
+## Co zawiera projekt
+
+- katalog hunterow, broni, shadow, successorow, blessing stones, cores, gems i artifactow
+- szczegolowe widoki elementow z grafikami i danymi z bazy
+- system buildow oraz import buildow z pliku/skryptu pomocniczego
+- posty, aktualnosci i roadmapy z mozliwoscia synchronizacji danych
+- sekcje PvP, tier list, kalkulatory, eventy i minigra
+- panel administratora oraz dashboard uzytkownika
+- logowanie Discord OAuth przez Passport
+- integracje creator-code przez osobny endpoint/API
+- statyczne zasoby graficzne w katalogu `picture`
 
 ## Wymagania
 
@@ -74,7 +86,7 @@ http://localhost:8089
 |   `-- api.js         # Glowne endpointy API
 |-- public/            # Frontend aplikacji
 |-- picture/           # Zasoby graficzne uzywane przez frontend
-|-- nic/               # Pliki pomocnicze/notatki
+|-- nic/               # Lokalne pliki pomocnicze/notatki
 |-- .env.example       # Przyklad konfiguracji
 `-- package.json       # Skrypty i zaleznosci
 ```
@@ -83,17 +95,4 @@ http://localhost:8089
 
 Aplikacja korzysta z lokalnego pliku `app.db`. SQLite tworzy tez pliki pomocnicze WAL/SHM, np. `app.db-wal` i `app.db-shm`.
 
-Te pliki sa ignorowane przez Git, bo zawieraja lokalny stan aplikacji. Jesli potrzebujesz przeniesc dane na serwer, zrob osobny backup bazy.
-
-## Git
-
-Repo ignoruje:
-
-- `node_modules`
-- pliki `.env` z sekretami
-- lokalne pliki SQLite
-- logi, cache i pliki tymczasowe edytorow
-
-Do repo powinny trafiac kod, statyczne zasoby aplikacji i `.env.example`, ale nie prawdziwe sekrety ani lokalna baza danych.
-
-Plik `.env.save`, jesli istnieje lokalnie, traktuj tylko jako prywatny backup konfiguracji. Aplikacja go nie potrzebuje do startu.
+Pliki bazy zawieraja lokalny stan aplikacji. Jesli potrzebujesz przeniesc dane na serwer, zrob osobny backup bazy.
