@@ -1,98 +1,133 @@
 ﻿# SLA Hub
 
-SLA Hub to aplikacja webowa dla spolecznosci Solo Leveling: ARISE. Projekt laczy statyczny frontend, backend Express, logowanie przez Discord OAuth i lokalna baze SQLite. Strona sluzy jako hub z poradnikami, katalogami, buildami, postami i narzedziami pomocniczymi dla graczy.
+SLA Hub is a community web hub for Solo Leveling: ARISE. It combines a static frontend, an Express backend, Discord OAuth login, and a local SQLite database into one place for game data, builds, guides, posts, and player tools.
 
-## Co zawiera projekt
+The project is built as a practical fan-site/dashboard: users can browse game resources, check detailed item and character pages, manage profile-related data, and access admin or creator-code tools depending on permissions.
 
-- katalog hunterow, broni, shadow, successorow, blessing stones, cores, gems i artifactow
-- szczegolowe widoki elementow z grafikami i danymi z bazy
-- system buildow oraz import buildow z pliku/skryptu pomocniczego
-- posty, aktualnosci i roadmapy z mozliwoscia synchronizacji danych
-- sekcje PvP, tier list, kalkulatory, eventy i minigra
-- panel administratora oraz dashboard uzytkownika
-- logowanie Discord OAuth przez Passport
-- integracje creator-code przez osobny endpoint/API
-- statyczne zasoby graficzne w katalogu `picture`
+## Features
 
-## Wymagania
+### Game Catalogs
 
-- Node.js 18 lub nowszy
+SLA Hub includes browsable catalogs for major game resources, including hunters, hunter weapons, Sung Jinwoo weapons, shadows, successors, blessing stones, cores, gems, artifacts, events, and special commission content. These sections are backed by local data and image assets so the site can present game information with matching visuals.
+
+### Detail Pages
+
+Many catalog entries have dedicated detail views. These pages are designed to show richer information for a selected character, weapon, shadow, successor, or item instead of only listing it in a grid. The `picture` folder stores the visual assets used across those views.
+
+### Builds System
+
+The project contains a build system for storing and displaying player builds. There is also an `import-builds.js` helper script, which suggests that build data can be imported or refreshed from external/local sources instead of being entered only by hand.
+
+### Posts, News, and Roadmaps
+
+SLA Hub supports posts, latest updates, roadmap content, and synchronization-related endpoints. This makes the site useful not only as a static database, but also as a place for ongoing updates, announcements, and game-related article content.
+
+### Player Tools
+
+The frontend includes several utility sections such as tier lists, calculators, PvP pages, events, suggestions, and a mini game. These modules make the hub more interactive and give users quick access to tools around progression, comparison, and planning.
+
+### User Accounts
+
+Authentication is handled through Discord OAuth using Passport. After logging in, users can have a profile/dashboard experience, while selected Discord IDs can receive additional permissions through environment configuration.
+
+### Admin Panel
+
+The project includes an admin area for managing selected parts of the application. Admin access is controlled through configured Discord user IDs and related permission checks in the backend.
+
+### Creator-Code Integration
+
+SLA Hub can connect to a separate creator-code service through a configured bot/API endpoint. This is controlled through environment variables such as `CREATOR_URL`, `CREATOR_BOT_API_URL`, `CREATOR_BOT_API_SECRET`, and `CREATOR_ALLOW`.
+
+## Tech Stack
+
+- Node.js
+- Express
+- better-sqlite3
+- Passport
+- passport-discord
+- dotenv
+- Static frontend files in `public`
+- Local image/assets directory in `picture`
+
+## Requirements
+
+- Node.js 18 or newer
 - npm
-- Konto/aplikacja Discord do OAuth
+- A Discord application for OAuth login
 
-## Instalacja
+## Installation
 
 ```bash
 npm install
 ```
 
-Skopiuj przykladowa konfiguracje:
+Copy the example environment file:
 
 ```bash
 cp .env.example .env
 ```
 
-Na Windows PowerShell:
+On Windows PowerShell:
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-Uzupelnij `.env` prawdziwymi wartosciami dla Discord OAuth, sesji i adresu publicznego.
+Then fill `.env` with your real Discord OAuth credentials, session secret, public URL, and optional integration settings.
 
-## Uruchomienie
+## Running the App
 
 ```bash
 npm start
 ```
 
-Domyslnie aplikacja startuje na porcie z `PORT` albo `8089`.
+By default, the app runs on the port defined by `PORT`, or `8089` when no port is provided.
 
-Przyklad lokalnego adresu:
+Local example:
 
 ```text
 http://localhost:8089
 ```
 
-## Najwazniejsze zmienne `.env`
+## Environment Variables
 
-| Zmienna | Opis |
+| Variable | Description |
 | --- | --- |
-| `PORT` | Port serwera Express. |
-| `BASE_URL` | Publiczny adres aplikacji, uzywany m.in. przy OAuth. |
-| `BASE_PATH` | Opcjonalna sciezka bazowa, np. `/slahub`; pusta wartosc oznacza root. |
-| `SESSION_SECRET` | Sekret sesji Express. Powinien byc dlugi i prywatny. |
-| `DISCORD_CLIENT_ID` | ID aplikacji Discord. |
-| `DISCORD_CLIENT_SECRET` | Sekret aplikacji Discord. |
-| `DISCORD_CALLBACK_DOMAIN` | Opcjonalny callback OAuth dla domeny. |
-| `DISCORD_CALLBACK_IP` | Opcjonalny callback OAuth dla adresu IP. |
-| `COOKIE_SECURE` | `true`, `false` albo `auto` dla ciasteczek sesji. |
-| `ADMINS` | Lista ID administratorow. |
-| `CREATOR_ALLOW` | Lista ID uzytkownikow z dostepem do creator-code. |
-| `CREATOR_URL` | Sciezka lub URL narzedzia creator-code. |
-| `ALLOWED_PUBLIC_HOSTS` | Dozwolone hosty publiczne. |
-| `POSTS_FULLSYNC_KEY` | Klucz do pelnej synchronizacji postow. |
-| `CREATOR_BOT_API_URL` | Adres API narzedzia creator-code. |
-| `CREATOR_BOT_API_SECRET` | Sekret API narzedzia creator-code. |
+| `PORT` | Express server port. |
+| `BASE_URL` | Public app URL, used for redirects and OAuth callbacks. |
+| `BASE_PATH` | Optional base path, for example `/slahub`; empty means root. |
+| `SESSION_SECRET` | Express session secret. Use a long private value in production. |
+| `DISCORD_CLIENT_ID` | Discord application client ID. |
+| `DISCORD_CLIENT_SECRET` | Discord application client secret. |
+| `DISCORD_CALLBACK_DOMAIN` | Optional OAuth callback URL for the domain strategy. |
+| `DISCORD_CALLBACK_IP` | Optional OAuth callback URL for the IP strategy. |
+| `COOKIE_SECURE` | `true`, `false`, or `auto` for session cookies. |
+| `ADMINS` | Comma-separated Discord user IDs with admin access. |
+| `CREATOR_ALLOW` | Comma-separated Discord user IDs allowed to use creator-code features. |
+| `CREATOR_URL` | Path or URL for the creator-code tool. |
+| `ALLOWED_PUBLIC_HOSTS` | Comma-separated public hosts allowed by the app. |
+| `POSTS_FULLSYNC_KEY` | Secret key for full post synchronization endpoints. |
+| `CREATOR_BOT_API_URL` | API URL for the creator-code bot/service. |
+| `CREATOR_BOT_API_SECRET` | Shared secret for the creator-code bot/service. |
 
-## Struktura projektu
+## Project Structure
 
 ```text
 .
-|-- server.js          # Start serwera, statyczne pliki, auth routes i SPA fallback
-|-- auth.js            # Konfiguracja Passport/Discord OAuth
-|-- db.js              # SQLite, migracje i funkcje dostepu do danych
+|-- server.js          # Express server, static files, auth routes, and SPA fallback
+|-- auth.js            # Passport and Discord OAuth configuration
+|-- db.js              # SQLite connection, migrations, and data helpers
 |-- routes/
-|   `-- api.js         # Glowne endpointy API
-|-- public/            # Frontend aplikacji
-|-- picture/           # Zasoby graficzne uzywane przez frontend
-|-- nic/               # Lokalne pliki pomocnicze/notatki
-|-- .env.example       # Przyklad konfiguracji
-`-- package.json       # Skrypty i zaleznosci
+|   `-- api.js         # Main API endpoints
+|-- public/            # Frontend application files
+|-- picture/           # Image assets used by the frontend
+|-- nic/               # Local helper notes/files
+|-- .env.example       # Example environment configuration
+`-- package.json       # npm scripts and dependencies
 ```
 
-## Baza danych
+## Database
 
-Aplikacja korzysta z lokalnego pliku `app.db`. SQLite tworzy tez pliki pomocnicze WAL/SHM, np. `app.db-wal` i `app.db-shm`.
+The app uses a local SQLite database file named `app.db`. SQLite may also create helper files such as `app.db-wal` and `app.db-shm` while the app is running.
 
-Pliki bazy zawieraja lokalny stan aplikacji. Jesli potrzebujesz przeniesc dane na serwer, zrob osobny backup bazy.
+These database files contain local application state. If you need to move data to another machine or server, create a separate database backup and restore it there.
