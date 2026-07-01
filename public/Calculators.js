@@ -210,7 +210,7 @@
   function injectStyles() {
     const STYLE_ID = 'sla-calculators-style';
     const rawCss = `
-      .calc-shell{max-width:1300px;margin:0 auto}
+      .calc-shell{max-width:1280px;margin:0 auto}
       .calc-tabs{display:grid;gap:10px;margin-bottom:14px}
       .calc-tabs.two{grid-template-columns:repeat(2,1fr)}
       .calc-tabs.three{grid-template-columns:repeat(3,1fr)}
@@ -226,25 +226,86 @@
         background:rgba(250,204,21,.95);color:#0f172a;border-color:rgba(250,204,21,.65)
       }
 
-      .card{border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgba(15,23,42,.25);padding:14px}
-      .card.hd{padding:14px 14px 10px}
-      .title{font-weight:950;color:rgba(250,204,21,.95);font-size:16px;display:flex;align-items:center;gap:8px}
-      .sub{font-size:12px;color:rgba(226,232,240,.80);font-weight:700;margin-top:4px}
+      .calc-layout{
+        display:grid;
+        grid-template-columns:minmax(0,1.45fr) minmax(360px,.85fr);
+        gap:18px;
+        align-items:start;
+      }
+      .calc-left,.calc-right{min-width:0}
+      .calc-right{position:sticky;top:90px}
+      .card{
+        border-radius:16px;border:1px solid rgba(255,255,255,.10);
+        background:linear-gradient(180deg,rgba(15,23,42,.30),rgba(2,6,23,.14));
+        padding:22px;box-shadow:0 18px 40px rgba(0,0,0,.14);
+      }
+      .card.hd{padding:22px}
+      .innerCard{
+        border-radius:16px;border:1px solid rgba(255,255,255,.10);
+        background:rgba(15,23,42,.25);padding:16px;min-width:0;
+      }
+      .innerCard:hover,.checkItem:hover{border-color:rgba(250,204,21,.22);background:rgba(15,23,42,.34)}
+      .title{
+        font-weight:950;color:#e2e8f0;font-size:16px;display:flex;align-items:center;gap:10px;
+        text-transform:uppercase;letter-spacing:0;
+      }
+      .title:before{content:"";width:16px;height:16px;display:inline-block;background:#facc15;border-radius:4px;box-shadow:0 0 18px rgba(250,204,21,.25)}
+      .sub{font-size:13px;color:rgba(226,232,240,.78);font-weight:700;margin-top:6px}
 
       .grid2{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
       .gridAuto{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+      .topInputs{display:grid;gap:16px;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:22px;align-items:start}
+      .precisionPanels{display:grid;gap:16px;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:22px}
+      .fieldStack{display:grid;gap:8px;min-width:0}
+      .calcTopField{display:grid;grid-template-rows:auto 44px auto;gap:8px;align-content:start;min-width:0}
+      .gemsCompactRow{display:flex;align-items:center;gap:8px;flex-wrap:nowrap;min-width:0}
+      .gemsManualInput{width:96px;flex:0 0 96px;text-align:center}
+      .gemLoadoutPanel{margin:0}
+      .useGemsBtn{
+        height:44px;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+        border-radius:8px;border:1px solid rgba(255,255,255,.10);
+        background:rgba(15,23,42,.25);color:#e2e8f0;font-weight:900;font-size:13px;
+        padding:0 10px;cursor:pointer;white-space:nowrap;flex:0 0 auto;
+        transition:background .12s ease,border-color .12s ease,box-shadow .12s ease;
+      }
+      .useGemsBtn:hover{border-color:rgba(250,204,21,.28);background:rgba(15,23,42,.38)}
+      .useGemsBtn.isActive{border-color:rgba(250,204,21,.45);background:rgba(250,204,21,.14);color:#facc15}
+      .useGemsBtn input{width:16px;height:16px;accent-color:#facc15}
+      .ownedMiniPill{
+        width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;
+        border-radius:8px;border:1px solid rgba(255,255,255,.10);
+        background:rgba(2,6,23,.14);color:#facc15;font-weight:950;font-size:13px;
+        padding:0;white-space:nowrap;cursor:pointer;flex:0 0 44px;
+        transition:background .12s ease,border-color .12s ease,box-shadow .12s ease;
+      }
+      .ownedMiniPill:hover{border-color:rgba(250,204,21,.38);background:rgba(250,204,21,.12)}
+      .gemsHint{margin-top:6px}
+      .accentLabel{color:#facc15;text-transform:uppercase}
 
       .inRow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
       .label{font-weight:900;color:#e2e8f0;font-size:13px}
       .hint{font-size:12px;color:rgba(148,163,184,.92);font-weight:700;margin-top:6px}
       .input{
-        height:40px;border-radius:12px;border:1px solid rgba(255,255,255,.10);
-        background:rgba(15,23,42,.25);color:#e2e8f0;font-weight:800;outline:none;
-        padding:0 12px;min-width:0;
-        transition:box-shadow .12s ease, background .12s ease;
+        width:100%;height:44px;border-radius:8px;border:1px solid rgba(255,255,255,.10);
+        background:rgba(2,6,23,.14);color:#e2e8f0;font-weight:850;outline:none;
+        padding:0 14px;min-width:0;line-height:44px;
+        transition:box-shadow .12s ease, background .12s ease, border-color .12s ease;
       }
-      .input:focus{box-shadow:0 0 0 2px rgba(250,204,21,.30)}
-      .select{height:40px}
+      .input:hover{border-color:rgba(255,255,255,.18)}
+      .input:focus{border-color:rgba(250,204,21,.45);box-shadow:0 0 0 3px rgba(250,204,21,.14)}
+      .select{height:44px;background-color:rgba(15,23,42,.95);color:#e2e8f0}
+      .select option{background:#111827;color:#e2e8f0}
+      .inputGroup{display:grid;grid-template-columns:54px minmax(0,1fr);align-items:center}
+      .inputGroup.three{grid-template-columns:54px minmax(0,1fr) 44px}
+      .inputIcon,.inputSuffix{
+        height:44px;display:flex;align-items:center;justify-content:center;
+        border:1px solid rgba(250,204,21,.25);background:rgba(250,204,21,.10);
+        color:#facc15;font-weight:950;
+      }
+      .inputIcon{border-radius:8px 0 0 8px;border-right:0}
+      .inputSuffix{border-radius:0 8px 8px 0;border-left:0}
+      .inputGroup .input{border-radius:0 8px 8px 0}
+      .inputGroup.three .input{border-radius:0}
       .btn{
         height:40px;border-radius:12px;border:1px solid rgba(255,255,255,.10);
         background:rgba(15,23,42,.35);color:#e2e8f0;font-weight:800;cursor:pointer;
@@ -260,8 +321,8 @@
       .btn.primary:hover{background:rgba(250,204,21,1);filter:brightness(1.02)}
       .pill{
         display:inline-flex;align-items:center;gap:8px;
-        border-radius:999px;border:1px solid rgba(255,255,255,.10);
-        padding:7px 10px;background:rgba(15,23,42,.25);
+        border-radius:8px;border:1px solid rgba(255,255,255,.10);
+        padding:9px 10px;background:rgba(15,23,42,.25);
         color:#e2e8f0;font-weight:800;font-size:13px;
       }
       .pill.center{margin-left:auto;margin-right:auto;justify-content:center;min-width:110px}
@@ -277,7 +338,7 @@
       }
       .toggle{
         display:flex;align-items:center;gap:10px;
-        padding:10px 12px;border-radius:14px;border:1px solid rgba(148,163,184,.18);
+        padding:10px 12px;border-radius:12px;border:1px solid rgba(148,163,184,.18);
         background:rgba(15,23,42,.25);
       }
       .toggle input{width:18px;height:18px}
@@ -285,49 +346,97 @@
       .toggle .clickText:hover{opacity:.9;text-decoration:underline}
 
       .resultsBox{
-        border-radius:16px;border:1px solid rgba(34,197,94,.35);
-        background:rgba(34,197,94,.10);
-        padding:14px;
+        border-radius:16px;border:1px solid rgba(255,255,255,.10);
+        background:rgba(15,23,42,.25);
+        padding:16px;
       }
-      .resultsTitle{display:flex;align-items:center;justify-content:space-between;gap:12px}
+      .heroBox{
+        border-color:rgba(250,204,21,.45);
+        background:linear-gradient(135deg,rgba(250,204,21,.14),rgba(15,23,42,.25));
+      }
+      .flatBox{background:rgba(255,255,255,.045)}
+      .resultsTitle{display:grid;gap:10px}
       .resultsTitle .left{display:grid;gap:2px}
-      .resultsTitle .big{font-weight:950;color:#e2e8f0}
-      .resultsTitle .small{font-size:12px;color:rgba(148,163,184,.95);font-weight:800}
-      .resultsTitle .value{font-weight:950;font-size:24px;color:rgba(34,197,94,.95)}
+      .resultsTitle .big{font-weight:950;color:rgba(148,163,184,.95);font-size:11px;text-transform:uppercase}
+      .resultsTitle .small{font-size:12px;color:rgba(226,232,240,.78);font-weight:800}
+      .resultsTitle .value{
+        font-weight:950;font-size:42px;line-height:1;color:#fff;
+        font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:0;
+      }
+      .metricGrid{display:grid;gap:10px;margin-top:14px}
+      .metricBox{
+        display:flex;align-items:center;justify-content:space-between;gap:12px;
+        border-radius:12px;border:1px solid rgba(255,255,255,.08);
+        background:rgba(2,6,23,.14);padding:12px 14px;
+      }
+      .metricBox span,.kvRow span{color:rgba(148,163,184,.95);font-weight:850;font-size:12px}
+      .metricBox strong,.kvRow strong{color:#e2e8f0;font-weight:950}
       .kv{display:grid;gap:8px;margin-top:10px}
-      .kvRow{display:flex;justify-content:space-between;gap:10px;font-weight:900;color:#e2e8f0}
-      .kvRow span{color:rgba(148,163,184,.95);font-weight:800}
+      .kvRow{display:flex;justify-content:space-between;align-items:center;gap:10px;font-weight:900;color:#e2e8f0;min-height:28px}
+      .kvRow.emphasis{
+        margin-top:6px;border-radius:10px;border:1px solid rgba(250,204,21,.40);
+        background:rgba(250,204,21,.14);padding:10px 12px;
+      }
+      .kvRow.emphasis span,.kvRow.emphasis strong,.kvRow.emphasis div{color:#facc15}
 
       .sectionHead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
-      .sectionHead .h{font-weight:950;color:#e2e8f0}
+      .sectionHead .h{font-weight:950;color:#e2e8f0;text-transform:uppercase;font-size:13px}
       .muted{color:rgba(148,163,184,.95);font-weight:800;font-size:12px}
       .badgeOk{color:rgba(34,197,94,.95);font-weight:950}
-      .badgeWarn{color:rgba(245,158,11,.95);font-weight:950}
+      .badgeWarn{color:#facc15;font-weight:950}
 
+      .bonusSources{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:14px}
+      .bonusGroup{border-radius:14px;border:1px solid rgba(255,255,255,.10);background:rgba(15,23,42,.25);padding:14px}
+      .bonusGroupTitle{font-weight:950;color:#e2e8f0;text-transform:uppercase;font-size:12px;margin-bottom:12px}
+      .bonusList{display:grid;gap:10px}
       .bonusGrid{display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}
       .checkItem{
-        display:flex;align-items:center;gap:10px;justify-content:space-between;
+        display:grid;gap:8px;
         border:1px solid rgba(148,163,184,.16);
         background:rgba(2,6,23,.14);
-        border-radius:14px;padding:10px 12px;
+        border-radius:10px;padding:10px 12px;
+        cursor:pointer;
+        transition:background .12s ease,border-color .12s ease,box-shadow .12s ease;
       }
+      .checkItem:hover{border-color:rgba(250,204,21,.26);background:rgba(15,23,42,.38)}
+      .checkItem.isActive{
+        border-color:rgba(250,204,21,.38);
+        background:linear-gradient(135deg,rgba(250,204,21,.10),rgba(15,23,42,.34));
+        box-shadow:inset 0 0 0 1px rgba(34,197,94,.10);
+      }
+      .checkTop{display:flex;align-items:center;gap:10px;justify-content:space-between;min-height:26px;cursor:pointer}
       .checkItem .left{display:flex;align-items:center;gap:10px;min-width:0}
-      .checkItem .nm{font-weight:900;color:#e2e8f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-      .checkItem .val{font-weight:950;color:rgba(34,197,94,.95);flex:0 0 auto}
-      .checkItem input[type="checkbox"]{width:18px;height:18px}
-      .inlineNum{width:90px;text-align:center}
+      .checkItem .nm{font-weight:900;color:#e2e8f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+      .checkItem .val{font-weight:950;color:#facc15;flex:0 0 auto;font-size:12px;cursor:pointer}
+      .switch{position:relative;display:inline-flex;width:30px;height:16px;flex:0 0 auto}
+      .switch input{position:absolute;opacity:0;inset:0;margin:0}
+      .switch span{
+        width:30px;height:16px;border-radius:999px;border:1px solid rgba(148,163,184,.28);
+        background:rgba(15,23,42,.9);transition:background .12s ease,border-color .12s ease;
+      }
+      .switch span:after{
+        content:"";position:absolute;width:8px;height:8px;border-radius:999px;left:4px;top:4px;
+        background:rgba(148,163,184,.9);transition:transform .12s ease,background .12s ease;
+      }
+      .switch input:checked + span{background:rgba(34,197,94,.95);border-color:rgba(34,197,94,.95)}
+      .switch input:checked + span:after{transform:translateX(14px);background:#fff}
+      .switch input:focus-visible + span{box-shadow:0 0 0 3px rgba(250,204,21,.18)}
+      .unitWrap{display:grid;gap:6px;padding-left:44px;cursor:default}
+      .unitWrap *{cursor:default}
+      .unitLabel{margin-top:0}
+      .inlineNum{width:96px;height:34px;text-align:left;cursor:text}
 
       .bdBox{
         border-radius:14px;border:1px solid rgba(148,163,184,.16);
         background:rgba(2,6,23,.10);
-        padding:14px;
+        padding:14px;display:grid;gap:10px;
       }
-      .bdGrid{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
-      .bdItem{display:grid;gap:4px}
+      .bdGrid{display:grid;gap:10px}
+      .bdItem{display:flex;align-items:center;justify-content:space-between;gap:14px}
       .bdLbl{color:rgba(148,163,184,.95);font-weight:900;font-size:12px}
-      .bdVal{color:#e2e8f0;font-weight:950;font-size:18px}
+      .bdVal{color:#e2e8f0;font-weight:950;font-size:13px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
       .bdVal.green{color:rgba(34,197,94,.95)}
-      .bdVal.yellow{color:#ffc107}
+      .bdVal.yellow{color:#facc15}
 
       .adminWrap{display:grid;gap:12px}
       .adminSec{
@@ -362,10 +471,20 @@
       .danger{background:rgba(239,68,68,.15);border-color:rgba(239,68,68,.35)}
       .danger:hover{filter:brightness(1.05)}
 
+      @media (max-width: 1100px){
+        .calc-layout{grid-template-columns:1fr}
+        .calc-right{position:static}
+      }
       @media (max-width: 840px){
+        .card,.card.hd{padding:16px}
         .grid2{grid-template-columns:1fr}
+        .topInputs{grid-template-columns:1fr}
+        .precisionPanels{grid-template-columns:1fr}
+        .bonusSources{grid-template-columns:1fr}
         .bonusGrid{grid-template-columns:1fr}
         .bdGrid{grid-template-columns:1fr}
+        .resultsTitle .value{font-size:34px}
+        .gemsCompactRow{flex-wrap:wrap}
         .adminRow{grid-template-columns:1fr}
         .modeHead{grid-template-columns:1fr}
         .modeRow{grid-template-columns:1fr}
@@ -395,13 +514,13 @@
     precision: {
       // ✅ editable modes (id + label + target)
       modes: [
-        { id: 'gb', label: 'Guild Boss (GB)', target: 18700 },
-        { id: 'hard_pod', label: 'Power of Destruction (Hard)', target: 23423 },
-        { id: 'valtair_hard', label: 'Valtair (Hard)', target: 29300 }
+        { id: 'gb', label: 'Guild Boss', target: 18700 },
+        { id: 'hard_pod', label: 'Power of Calamity', target: 19400 }
       ],
       perceptionMax: 9999, // ✅ new setting (admin)
       weaponRarityBonus: { none: 0, r: 1250, sr: 2000, ssr: 4000 },
-      base: { sjw: 0, hunters: 13010 }, // ✅ changed from 12110 -> 13010
+      hunterTrainingPoints: { none: 0, '1': 3065, '2': 6130, '3': 9195 },
+      base: { sjw: 0, hunters: 12110 },
       perceptionTable: [
         [10,600],[15,895],[20,1190],[25,1480],[30,1770],[35,2055],[40,2340],[45,2620],[50,2900],[55,3175],
         [60,3450],[65,3720],[70,3990],[75,4255],[80,4520],[85,4780],[90,5040],[95,5295],[100,5550],[105,5800],
@@ -433,6 +552,7 @@
         ennio: 16,
         knightKiller: 24,
         armed: 18,
+        architectBluePoison: 20,
         beste: 18
       }
     }
@@ -461,13 +581,24 @@
     if (cfg?.precision && !Array.isArray(cfg.precision.modes) && cfg.precision.modeTargets) {
       const mt = cfg.precision.modeTargets;
       cfg.precision.modes = [
-        { id: 'gb', label: 'Guild Boss (GB)', target: +mt.gb || 18700 },
-        { id: 'hard_pod', label: 'Power of Destruction (Hard)', target: +mt.hard_pod || 23423 },
-        { id: 'valtair_hard', label: 'Valtair (Hard)', target: +mt.valtair_hard || 29300 }
+        { id: 'gb', label: 'Guild Boss', target: +mt.gb || 18700 },
+        { id: 'hard_pod', label: 'Power of Calamity', target: +mt.hard_pod || 19400 }
       ];
       delete cfg.precision.modeTargets;
     }
     if (!cfg?.precision?.perceptionMax) cfg.precision.perceptionMax = 9999;
+    if (!cfg?.precision?.hunterTrainingPoints) cfg.precision.hunterTrainingPoints = { none: 0, '1': 3065, '2': 6130, '3': 9195 };
+    if (cfg?.precision?.base?.hunters === 13010) cfg.precision.base.hunters = 12110;
+    if (Array.isArray(cfg?.precision?.modes)) {
+      cfg.precision.modes = cfg.precision.modes
+        .filter(m => !(m?.id === 'valtair_hard' && +m.target === 29300))
+        .map(m => {
+          if (m?.id === 'gb' && (+m.target === 18700 || !Number.isFinite(+m.target))) return { ...m, label: 'Guild Boss', target: 18700 };
+          if (m?.id === 'hard_pod' && (+m.target === 23423 || +m.target === 19400 || !Number.isFinite(+m.target))) return { ...m, label: 'Power of Calamity', target: 19400 };
+          return m;
+        });
+    }
+    if (cfg?.defpen?.bonuses && cfg.defpen.bonuses.architectBluePoison == null) cfg.defpen.bonuses.architectBluePoison = 20;
     return cfg;
   }
 
@@ -488,8 +619,8 @@
   // --------------------------
   // Precision interpolation helpers
   // --------------------------
-  function precFromPerception(points, table) {
-    const e = Array.isArray(table) ? table : [];
+  function precisionFromPerception(points, table) {
+    const e = Array.isArray(table) ? table : DEFAULT_CFG.precision.perceptionTable;
     const i = Math.max(0, +points || 0);
     if (!e.length) return 0;
 
@@ -515,7 +646,7 @@
   }
 
   function perceptionNeededForPrecision(precision, table) {
-    const e = Array.isArray(table) ? table : [];
+    const e = Array.isArray(table) ? table : DEFAULT_CFG.precision.perceptionTable;
     const i = +precision;
     if (!Number.isFinite(i) || i <= 0 || !e.length) return 0;
 
@@ -646,9 +777,10 @@
       gemsManual: 0,
       gemsFromLoadout: null,
       gemsOwnedLoadout: null,
-      sjwWeapon1: 'none',
-      sjwWeapon2: 'none',
-      huntersWeapon: 'none',
+      sjwWeapon1: 'ssr',
+      sjwWeapon2: 'ssr',
+      huntersWeapon: 'ssr',
+      huntersTraining: 'none',
       sjwPerception: 10
     },
 
@@ -665,6 +797,7 @@
         ennio: false,
         knightKiller: false,
         armed: false,
+        architectBluePoison: false,
         beste: false
       },
       custom: 0
@@ -749,13 +882,12 @@
   }
 
   function getGemCount() {
-    const maxGem = STATE.maxGem || STATE.cfg.gems.maxGemsFallback || 12;
     if (STATE.precision.useGemsLoadout) {
       const v = STATE.precision.gemsFromLoadout;
-      if (Number.isFinite(+v)) return clampInt(v, 0, maxGem, 0);
+      if (Number.isFinite(+v)) return clampInt(v, 0, 999999, 0);
       return 0;
     }
-    return clampInt(STATE.precision.gemsManual, 0, maxGem, 0);
+    return clampInt(STATE.precision.gemsManual, 0, 999999, 0);
   }
 
   function getOwnedGemText() {
@@ -763,64 +895,81 @@
     return `Owned: ${owned}`;
   }
 
-  function calcPrecision() {
-    const cfg = STATE.cfg;
-    const target = getPrecisionTarget();
-    const perGem = cfg.gems.precisionPerGem || 1800;
+  function calcPrecision(input = STATE.precision, config = STATE.cfg) {
+    const cfg = mergeDeep(structuredCloneSafe(DEFAULT_CFG), config || {});
+    const modes = Array.isArray(cfg.precision.modes) ? cfg.precision.modes : DEFAULT_CFG.precision.modes;
+    const mode = modes.find(m => m.id === input.mode) || modes[0] || DEFAULT_CFG.precision.modes[0];
+    const target = clampInt(mode?.target, 0, 999999, 18700);
+    const perGem = clampInt(cfg.gems?.precisionPerGem, 1, 999999, 1800);
+    const table = Array.isArray(cfg.precision?.perceptionTable) ? cfg.precision.perceptionTable : DEFAULT_CFG.precision.perceptionTable;
 
-    const gemCount = getGemCount();
+    const gemCount = clampInt(input.ownedGems ?? input.gemsOwned ?? getGemCount(), 0, 999999, 0);
     const gemPrec = gemCount * perGem;
+    const perMax = clampInt(cfg.precision?.perceptionMax ?? 9999, 10, 999999, 9999);
 
-    const perMax = clampInt(cfg.precision.perceptionMax ?? 9999, 10, 999999, 9999);
+    const wMap = cfg.precision?.weaponRarityBonus || DEFAULT_CFG.precision.weaponRarityBonus;
+    const tMap = cfg.precision?.hunterTrainingPoints || DEFAULT_CFG.precision.hunterTrainingPoints;
+    const baseSJW = clampInt(cfg.precision?.base?.sjw, 0, 999999, 0);
+    const baseHunters = clampInt(cfg.precision?.base?.hunters, 0, 999999, 12110);
 
-    const sjwPer = clampInt(STATE.precision.sjwPerception, 10, perMax, 10);
-    const fromPer = precFromPerception(sjwPer, cfg.precision.perceptionTable);
-    const sjwBased = Math.round(fromPer + gemPrec);
+    const sjwPer = clampInt(input.sjwPerception, 0, perMax, 10);
+    const perceptionPrecision = Math.round(precisionFromPerception(sjwPer, table));
+    const sjwW = (+wMap[String(input.sjwWeapon1 || 'none').toLowerCase()] || 0) + (+wMap[String(input.sjwWeapon2 || 'none').toLowerCase()] || 0);
+    const huntersW = +wMap[String(input.huntersWeapon || 'none').toLowerCase()] || 0;
+    const trainingPrecision = +tMap[String(input.huntersTraining || 'none')] || 0;
 
-    const wMap = cfg.precision.weaponRarityBonus || {};
-    const w1 = String(STATE.precision.sjwWeapon1 || 'none').toLowerCase();
-    const w2 = String(STATE.precision.sjwWeapon2 || 'none').toLowerCase();
-    const wh = String(STATE.precision.huntersWeapon || 'none').toLowerCase();
-
-    const sjwW = (wMap[w1] || 0) + (wMap[w2] || 0);
-    const huntersW = (wMap[wh] || 0);
-
-    const sjwTotal = (cfg.precision.base?.sjw || 0) + sjwBased + sjwW;
-    const huntersBased = (cfg.precision.base?.hunters || 0) + gemPrec;
-    const huntersTotal = huntersBased + huntersW;
-
+    const sjwOwned = baseSJW + gemPrec + perceptionPrecision;
+    const sjwTotal = sjwOwned + sjwW;
     const sjwRemaining = Math.max(0, target - sjwTotal);
-    const huntersRemaining = Math.max(0, target - huntersTotal);
-
     const sjwGemsNeeded = sjwRemaining <= 0 ? 0 : Math.ceil(sjwRemaining / perGem);
-    const huntersGemsNeeded = huntersRemaining <= 0 ? 0 : Math.ceil(huntersRemaining / perGem);
+    const neededPer = perceptionNeededForPrecision(target - sjwW - gemPrec, table);
 
-    const sjwNeedPrecFromPer = Math.max(0, target - gemPrec - sjwW);
-    const neededPer = perceptionNeededForPrecision(sjwNeedPrecFromPer, cfg.precision.perceptionTable);
+    const huntersOwned = baseHunters + gemPrec + trainingPrecision;
+    const huntersTotal = huntersOwned + huntersW;
+    const huntersRemaining = Math.max(0, target - huntersTotal);
+    const huntersGemsNeeded = huntersRemaining <= 0 ? 0 : Math.ceil(huntersRemaining / perGem);
 
     return {
       target,
+      precisionNeeded: target,
       perGem,
       gemCount,
       gemPrec,
+      ownedPrecisionFromGems: gemPrec,
       remainingToTargetFromGems: Math.max(0, target - gemPrec),
       perMax,
       sjw: {
+        base: baseSJW,
         perception: sjwPer,
-        fromPer,
-        based: sjwBased,
+        perceptionPrecision,
+        fromPer: perceptionPrecision,
+        ownedPrecision: sjwOwned,
+        weaponPrecision: sjwW,
         weapon: sjwW,
+        totalPrecision: sjwTotal,
         total: sjwTotal,
+        remainingPrecision: sjwRemaining,
         remaining: sjwRemaining,
+        additionalGems: sjwGemsNeeded,
         gemsNeeded: sjwGemsNeeded,
-        neededPerception: neededPer
+        additionalGemsLabel: sjwGemsNeeded <= 0 ? 'Achieved' : String(sjwGemsNeeded),
+        perceptionNeeded: neededPer,
+        neededPerception: neededPer,
+        perceptionNeededLabel: neededPer <= 0 ? 'Achieved' : String(neededPer)
       },
       hunters: {
-        based: huntersBased,
+        base: baseHunters,
+        ownedPrecision: huntersOwned,
+        trainingPrecision,
+        weaponPrecision: huntersW,
         weapon: huntersW,
+        totalPrecision: huntersTotal,
         total: huntersTotal,
+        remainingPrecision: huntersRemaining,
         remaining: huntersRemaining,
-        gemsNeeded: huntersGemsNeeded
+        additionalGems: huntersGemsNeeded,
+        gemsNeeded: huntersGemsNeeded,
+        additionalGemsLabel: huntersGemsNeeded <= 0 ? 'Achieved' : String(huntersGemsNeeded)
       }
     };
   }
@@ -837,42 +986,52 @@
     return s;
   }
 
+  function mkTrainingSelect(value, onChange) {
+    const s = el('select', { class: 'input select', style: 'width:100%' },
+      el('option', { value: 'none' }, 'None'),
+      el('option', { value: '1' }, '1 point (+3065)'),
+      el('option', { value: '2' }, '2 points (+6130)'),
+      el('option', { value: '3' }, '3 points (+9195)')
+    );
+    s.value = String(value || 'none');
+    s.addEventListener('change', () => onChange(String(s.value || 'none')));
+    return s;
+  }
+
   function renderPrecision(root) {
     ensureValidModeId();
     const cfg = STATE.cfg;
 
     const cardInputs = el('div', { class: 'card hd' },
-      el('div', { class: 'title' }, '⚙️ Input Parameters'),
-      el('div', { class: 'sub' }, 'Set mode + gems + perception/weapons.')
+      el('div', { class: 'title' }, 'Inputs'),
+      el('div', { class: 'sub' }, 'Set the mode first, then adjust the player and hunter assumptions.')
     );
 
-    // Game mode dynamic dropdown
-    const modeSel = el('select', { class: 'input select', style: 'min-width:260px', 'data-key': 'prec-mode' });
+    const modeSel = el('select', { class: 'input select', 'data-key': 'prec-mode' });
     const modes = getModes();
-    for (const m of modes) {
-      modeSel.append(el('option', { value: m.id }, m.label || m.id));
-    }
+    for (const m of modes) modeSel.append(el('option', { value: m.id }, m.label || m.id));
     modeSel.value = STATE.precision.mode;
     modeSel.addEventListener('change', () => {
       STATE.precision.mode = String(modeSel.value || modes[0]?.id || 'gb');
       renderPreserve();
     });
 
-    // Toggle (click text -> /gems)
-    const toggleWrap = el('div', { class: 'toggle' },
+    const toggleWrap = el('label', {
+      class: `useGemsBtn gemLoadoutPanel${STATE.precision.useGemsLoadout ? ' isActive' : ''}`,
+      title: 'Use my Gems Loadout'
+    },
       el('input', { type: 'checkbox', checked: !!STATE.precision.useGemsLoadout, 'data-key': 'prec-gems-toggle' }),
-      el('div', { class: 'grid clickText', style: 'gap:2px;min-width:0' },
-        el('div', { class: 'label' }, 'Use my Gems Loadout (click to open Gems)')
-      ),
-      el('div', { class: `pill ownedPill${getOwnedDisplayedCount() === 0 ? ' center' : ''}` },
-        el('span', { class: 'ownedLbl' }, 'Owned:'),
-        el('span', { class: 'ownedVal' }, String(getOwnedDisplayedCount()))
-      )
+      el('span', { class: 'clickText' }, 'Use my Gems')
     );
 
-    const clickText = qs('.clickText', toggleWrap);
-    clickText.addEventListener('click', () => {
-      location.href = url('/gems');
+    const ownedMini = el('button', {
+      type: 'button',
+      class: 'ownedMiniPill',
+      title: 'Open Gems'
+    }, String(getOwnedDisplayedCount()));
+    ownedMini.addEventListener('click', () => {
+      const target = url('/gems') || 'https://slahub.duckdns.org/gems';
+      location.href = target;
     });
 
     const toggle = qs('input[type="checkbox"]', toggleWrap);
@@ -889,17 +1048,14 @@
 
     const gemsInput = el('input', {
       type: 'number',
-      class: 'input',
+      class: 'input gemsManualInput',
       min: '0',
-      max: String(STATE.maxGem),
-      value: String(clampInt(STATE.precision.gemsManual, 0, STATE.maxGem, 0)),
-      style: 'width:160px',
+      value: String(clampInt(STATE.precision.gemsManual, 0, 999999, 0)),
       placeholder: '0',
       'data-key': 'prec-gems-manual'
     });
-
     gemsInput.addEventListener('input', () => {
-      const v = clampInt(gemsInput.value, 0, STATE.maxGem, 0);
+      const v = clampInt(gemsInput.value, 0, 999999, 0);
       STATE.precision.gemsManual = v;
       if (STATE.precision.useGemsLoadout) {
         STATE.precision.useGemsLoadout = false;
@@ -910,50 +1066,34 @@
 
     const r = calcPrecision();
 
-    // Build cards
     cardInputs.append(
-      el('div', { class: 'gridAuto mt-3' },
-        el('div', { class: 'card', style: 'background:rgba(15,23,42,.18)' },
+      el('div', { class: 'topInputs' },
+        el('div', { class: 'calcTopField' },
           el('div', { class: 'label' }, 'Game Mode'),
-          modeSel
+          modeSel,
+          STATE.precision.mode === 'gb' ? el('div', { class: 'hint' }, 'Levels are omitted; GB shows 90 in-game but uses the 80 baseline.') : null
         ),
-        el('div', { class: 'card', style: 'background:rgba(15,23,42,.18)' },
+        el('div', { class: 'calcTopField' },
           el('div', { class: 'label' }, 'Precision Gems Owned'),
-          el('div', { class: 'inRow' }, gemsInput, el('div', { class: 'pill' }, `${cfg.gems.precisionPerGem} / gem`))
-        ),
-        el('div', { class: 'card', style: 'background:rgba(15,23,42,.18)' }, toggleWrap)
-      )
-    );
-
-    const results = el('div', { class: 'card hd mt-3' },
-      el('div', { class: 'title' }, '📈 Results')
-    );
-
-    const box = el('div', { class: 'resultsBox mt-3' },
-      el('div', { class: 'resultsTitle' },
-        el('div', { class: 'left' },
-          el('div', { class: 'big' }, 'Precision Needed for 99%'),
-          el('div', { class: 'small' }, 'Per selected game mode')
-        ),
-        el('div', { class: 'value' }, formatInt(r.target))
-      ),
-      el('div', { class: 'kv' },
-        el('div', { class: 'kvRow' }, el('span', {}, 'Precision from your gems'), el('div', {}, formatInt(r.gemPrec))),
-        el('div', { class: 'kvRow' }, el('span', {}, 'Remaining precision to 99%'), el('div', {}, formatInt(r.remainingToTargetFromGems)))
+          el('div', { class: 'gemsCompactRow' }, gemsInput, toggleWrap, ownedMini),
+          el('div', {},
+            el('div', { class: 'hint gemsHint' }, `Each gem adds ${cfg.gems.precisionPerGem} precision.`)
+          )
+        )
       )
     );
 
     const sjwW1 = mkRaritySelect(STATE.precision.sjwWeapon1, (v) => { STATE.precision.sjwWeapon1 = v; renderPreserve(); });
     const sjwW2 = mkRaritySelect(STATE.precision.sjwWeapon2, (v) => { STATE.precision.sjwWeapon2 = v; renderPreserve(); });
     const huntersW = mkRaritySelect(STATE.precision.huntersWeapon, (v) => { STATE.precision.huntersWeapon = v; renderPreserve(); });
+    const huntersTraining = mkTrainingSelect(STATE.precision.huntersTraining, (v) => { STATE.precision.huntersTraining = v; renderPreserve(); });
 
     const perInput = el('input', {
       type: 'number',
       class: 'input',
       min: '10',
-      max: String(r.perMax), // ✅ perception max from settings
+      max: String(r.perMax),
       value: String(clampInt(STATE.precision.sjwPerception, 10, r.perMax, 10)),
-      style: 'width:160px',
       'data-key': 'prec-perception'
     });
     perInput.addEventListener('input', () => {
@@ -961,92 +1101,147 @@
       renderPreserve();
     });
 
-    const leftPanel = el('div', { class: 'card', style: 'background:rgba(15,23,42,.18)' },
+    const leftPanel = el('div', { class: 'innerCard' },
       el('div', { class: 'sectionHead' },
-        el('div', { class: 'h', style: 'color:#38bdf8' }, '👤 SJW Precision'),
-        el('div', { class: 'muted' }, `Base Precision: ${cfg.precision.base?.sjw || 0} (Base Perception: 10 → 600 Precision)`)
+        el('div', { class: 'h' }, 'SJW Precision'),
+        el('div', { class: 'muted' }, `Base precision ${formatInt(cfg.precision.base?.sjw || 0)}`)
       ),
-
-      el('div', { class: 'grid2' },
+      el('div', { class: 'hint' }, 'Base Perception: 10 to 600 Precision'),
+      el('div', { class: 'grid2 mt-3' },
         el('div', {}, el('div', { class: 'label' }, 'SJW Weapon 1'), sjwW1),
         el('div', {}, el('div', { class: 'label' }, 'SJW Weapon 2'), sjwW2)
       ),
+      el('div', { class: 'mt-3' }, el('div', { class: 'label' }, `Perception (max ${r.perMax})`), perInput)
+    );
 
-      el('div', { class: 'mt-3' }, el('div', { class: 'label' }, `Perception (max ${r.perMax})`), perInput),
+    const rightPanel = el('div', { class: 'innerCard' },
+      el('div', { class: 'sectionHead' },
+        el('div', { class: 'h' }, 'Hunters Precision'),
+        el('div', { class: 'muted' }, `Base precision ${formatInt(cfg.precision.base?.hunters || 0)}`)
+      ),
+      el('div', { class: 'hint' }, 'Hunter calculations use one weapon precision source.'),
+      el('div', { class: 'grid2 mt-3' },
+        el('div', {}, el('div', { class: 'label' }, 'Hunter Weapon Rarity'), huntersW),
+        el('div', {}, el('div', { class: 'label' }, 'Hunter Training Points'), huntersTraining)
+      )
+    );
 
+    cardInputs.append(el('div', { class: 'precisionPanels' }, leftPanel, rightPanel));
+
+    const results = el('div', { class: 'card hd' },
+      el('div', { class: 'title' }, 'Results'),
+      el('div', { class: 'sub' }, 'See the threshold first, then compare what SJW and Hunters still need.')
+    );
+
+    const box = el('div', { class: 'resultsBox heroBox mt-3' },
+      el('div', { class: 'resultsTitle' },
+        el('div', { class: 'left' },
+          el('div', { class: 'big' }, 'Precision Needed for 99%'),
+          el('div', { class: 'small' }, 'Per selected game mode')
+        ),
+        el('div', { class: 'value' }, formatInt(r.target))
+      )
+    );
+
+    const gemSummary = el('div', { class: 'metricGrid' },
+      el('div', { class: 'metricBox' }, el('span', {}, 'Precision from your gems'), el('strong', {}, formatInt(r.gemPrec))),
+      el('div', { class: 'metricBox' }, el('span', {}, 'Remaining precision to 99%'), el('strong', {}, formatInt(r.remainingToTargetFromGems)))
+    );
+
+    const sjwResults = el('div', { class: 'resultsBox mt-3' },
+      el('div', { class: 'sectionHead' }, el('div', { class: 'h' }, 'SJW Precision')),
       el('div', { class: 'kv mt-3' },
-        el('div', { class: 'kvRow' }, el('span', {}, 'Based precision'), el('div', {}, formatInt(r.sjw.based))),
-        el('div', { class: 'kvRow' }, el('span', {}, 'Weapon precision'), el('div', {}, formatInt(r.sjw.weapon))),
-        el('div', { class: 'kvRow' }, el('span', {}, 'Remaining precision'), el('div', {}, formatInt(r.sjw.remaining))),
-        el('div', { class: 'kvRow' }, el('span', {}, 'Additional gems needed'),
-          el('div', { class: r.sjw.gemsNeeded <= 0 ? 'badgeOk' : 'badgeWarn' },
-            r.sjw.gemsNeeded <= 0 ? 'Achieved' : String(r.sjw.gemsNeeded)
-          )
+        el('div', { class: 'kvRow' }, el('span', {}, 'Base precision'), el('strong', {}, formatInt(r.sjw.base + r.sjw.perceptionPrecision))),
+        el('div', { class: 'kvRow' }, el('span', {}, 'Weapon precision'), el('strong', {}, formatInt(r.sjw.weaponPrecision))),
+        el('div', { class: 'kvRow' }, el('span', {}, 'Remaining precision'), el('strong', {}, formatInt(r.sjw.remaining))),
+        el('div', { class: 'kvRow emphasis' }, el('span', {}, 'Additional gems needed'),
+          el('strong', { class: r.sjw.additionalGems <= 0 ? 'badgeOk' : 'badgeWarn' }, r.sjw.additionalGemsLabel)
         ),
         el('div', { class: 'kvRow' }, el('span', {}, 'Total perception points needed'),
-          el('div', { class: (r.sjw.neededPerception <= r.sjw.perception) ? 'badgeOk' : 'badgeWarn' },
-            (r.sjw.neededPerception <= r.sjw.perception) ? 'Achieved' : String(r.sjw.neededPerception)
-          )
+          el('strong', { class: r.sjw.perceptionNeeded <= 0 ? 'badgeOk' : 'badgeWarn' }, r.sjw.perceptionNeededLabel)
         )
       )
     );
 
-    const rightPanel = el('div', { class: 'card', style: 'background:rgba(15,23,42,.18)' },
-      el('div', { class: 'sectionHead' },
-        el('div', { class: 'h', style: 'color:#22c55e' }, '🧑‍🤝‍🧑 Hunters Precision'),
-        el('div', { class: 'muted' }, `Base Precision: ${cfg.precision.base?.hunters || 0}` )
-      ),
-      el('div', { class: 'mt-1' }, el('div', { class: 'label' }, 'Hunter Weapon Rarity'), huntersW),
+    const huntersResults = el('div', { class: 'resultsBox mt-3' },
+      el('div', { class: 'sectionHead' }, el('div', { class: 'h' }, 'Hunters Precision')),
       el('div', { class: 'kv mt-3' },
-        el('div', { class: 'kvRow' }, el('span', {}, 'Based precision'), el('div', {}, formatInt(r.hunters.based))),
-        el('div', { class: 'kvRow' }, el('span', {}, 'Weapon precision'), el('div', {}, formatInt(r.hunters.weapon))),
-        el('div', { class: 'kvRow' }, el('span', {}, 'Remaining precision'), el('div', {}, formatInt(r.hunters.remaining))),
-        el('div', { class: 'kvRow' }, el('span', {}, 'Additional gems needed'),
-          el('div', { class: r.hunters.gemsNeeded <= 0 ? 'badgeOk' : 'badgeWarn' },
-            r.hunters.gemsNeeded <= 0 ? 'Achieved' : String(r.hunters.gemsNeeded)
-          )
+        el('div', { class: 'kvRow' }, el('span', {}, 'Base precision'), el('strong', {}, formatInt(r.hunters.base))),
+        el('div', { class: 'kvRow' }, el('span', {}, 'Weapon precision'), el('strong', {}, formatInt(r.hunters.weaponPrecision))),
+        el('div', { class: 'kvRow' }, el('span', {}, 'Point precision'), el('strong', {}, formatInt(r.hunters.trainingPrecision))),
+        el('div', { class: 'kvRow' }, el('span', {}, 'Remaining precision'), el('strong', {}, formatInt(r.hunters.remaining))),
+        el('div', { class: 'kvRow emphasis' }, el('span', {}, 'Additional gems needed'),
+          el('strong', { class: r.hunters.additionalGems <= 0 ? 'badgeOk' : 'badgeWarn' }, r.hunters.additionalGemsLabel)
         )
       )
     );
 
-    results.append(box, el('div', { class: 'grid2 mt-3' }, leftPanel, rightPanel));
-    root.append(cardInputs, results);
+    results.append(box, gemSummary, sjwResults, huntersResults);
+    root.append(el('div', { class: 'calc-layout' },
+      el('div', { class: 'calc-left' }, cardInputs),
+      el('div', { class: 'calc-right' }, results)
+    ));
   }
 
   // --------------------------
   // Def Pen logic + UI
   // --------------------------
-  function calcDefPen() {
-    const flat = clampNum(STATE.defpen.flat, 0, 1e12, 0);
-    const lvl = clampInt(STATE.defpen.monsterLevel, 0, 200, 80);
+  function calcDefenseBasePercent(flat, monsterLevel) {
+    const f = Math.max(0, Number(flat) || 0);
+    const lvl = clampNum(monsterLevel, 0, 200, 80);
+    return f <= 0 ? 0 : (100 * f / (f + lvl * 1000));
+  }
 
-    const base = (flat <= 0) ? 0 : (100 * flat / (flat + lvl * 1000));
+  function calcDefenseFlatNeeded(bonusPct, monsterLevel) {
+    const remainingPct = 100 - (Math.max(0, Number(bonusPct) || 0));
+    if (remainingPct <= 0) return 0;
+    if (remainingPct >= 100) return Infinity;
+    return remainingPct * (clampNum(monsterLevel, 0, 200, 80) * 1000) / (100 - remainingPct);
+  }
 
-    const b = STATE.defpen.bonus;
-    const cfgB = STATE.cfg.defpen.bonuses || {};
+  function calcDefensePen(input = STATE.defpen, config = STATE.cfg) {
+    const flat = Math.max(0, Number(input.flat ?? input.sjwDefPen) || 0);
+    const lvl = clampNum(input.monsterLevel, 0, 200, 80);
+    const custom = Math.max(0, Number(input.custom ?? input.customValue) || 0);
+    const b = input.bonus || input.selectedBonuses || {};
+    const cfgB = config?.defpen?.bonuses || DEFAULT_CFG.defpen.bonuses;
+
     let bonus = 0;
-
     if (b.emma) bonus += +cfgB.emma || 0;
     if (b.gina) bonus += +cfgB.gina || 0;
-
-    if (b.esil) bonus += (+cfgB.esilPerFireUnit || 0) * Math.min(clampInt(b.esilUnits, 0, 6, 6), 6);
-    if (b.sian) bonus += (+cfgB.sianPerDarkUnit || 0) * Math.min(clampInt(b.sianUnits, 0, 6, 6), 6);
-
+    if (b.esil) bonus += (+cfgB.esilPerFireUnit || 0) * clampInt(b.esilUnits ?? input.bonusUnits?.esil, 1, 6, 6);
+    if (b.sian || b.sianHilat) bonus += (+cfgB.sianPerDarkUnit || 0) * clampInt(b.sianUnits ?? input.bonusUnits?.sianHilat, 1, 6, 6);
     if (b.ennio) bonus += +cfgB.ennio || 0;
-    if (b.knightKiller) bonus += +cfgB.knightKiller || 0;
+    if (b.knightKiller || b.knight) bonus += +cfgB.knightKiller || 0;
     if (b.armed) bonus += +cfgB.armed || 0;
+    if (b.architectBluePoison) bonus += +cfgB.architectBluePoison || 0;
     if (b.beste) bonus += +cfgB.beste || 0;
 
-    const custom = clampNum(STATE.defpen.custom, 0, 9999, 0);
+    const base = calcDefenseBasePercent(flat, lvl);
     const total = base + bonus + custom;
+    const flatNeeded = calcDefenseFlatNeeded(bonus + custom, lvl);
 
-    return { flat, lvl, base, bonus, custom, total };
+    return {
+      flat,
+      lvl,
+      sjwDefPen: flat,
+      monsterLevel: lvl,
+      base,
+      basePercentage: base,
+      bonus,
+      bonusPercentage: bonus,
+      custom,
+      customValue: custom,
+      total,
+      totalPercentage: total,
+      flatNeeded
+    };
   }
 
   function renderDefPen(root) {
     const cardInputs = el('div', { class: 'card hd' },
-      el('div', { class: 'title' }, '⚙️ Input Parameters'),
-      el('div', { class: 'sub' }, 'Flat def pen + monster level + bonuses.')
+      el('div', { class: 'title' }, 'Inputs'),
+      el('div', { class: 'sub' }, 'Start with your stat sheet, then add only the bonuses active for the fight.')
     );
 
     const inFlat = el('input', {
@@ -1054,7 +1249,6 @@
       class: 'input',
       min: '0',
       value: String(STATE.defpen.flat),
-      style: 'width:260px',
       'data-key': 'dp-flat'
     });
     inFlat.addEventListener('input', () => {
@@ -1068,7 +1262,6 @@
       min: '0',
       max: '200',
       value: String(STATE.defpen.monsterLevel),
-      style: 'width:260px',
       'data-key': 'dp-lvl'
     });
     inLvl.addEventListener('input', () => {
@@ -1077,44 +1270,59 @@
     });
 
     cardInputs.append(
-      el('div', { class: 'gridAuto mt-3' },
-        el('div', { class: 'card', style: 'background:rgba(15,23,42,.18)' },
+      el('div', { class: 'topInputs' },
+        el('div', { class: 'fieldStack' },
           el('div', { class: 'label' }, 'SJW Defense Penetration (Flat)'),
-          inFlat,
-          el('div', { class: 'hint' }, 'Check your character stats in-game')
+          el('div', { class: 'inputGroup' }, el('div', { class: 'inputIcon' }, '+'), inFlat),
+          el('div', { class: 'hint' }, 'Check your character stats in-game.')
         ),
-        el('div', { class: 'card', style: 'background:rgba(15,23,42,.18)' },
+        el('div', { class: 'fieldStack' },
           el('div', { class: 'label' }, 'Monster Level'),
-          inLvl,
-          el('div', { class: 'hint' }, 'Target enemy level')
+          el('div', { class: 'inputGroup' }, el('div', { class: 'inputIcon' }, 'Lv'), inLvl),
+          el('div', { class: 'hint' }, 'Target enemy level.')
         )
       )
-    );
-
-    const bonusCard = el('div', { class: 'card', style: 'background:rgba(15,23,42,.18); margin-top:12px;' },
-      el('div', { class: 'label' }, 'Additional Defense Penetration Bonuses (Optional)'),
-      el('div', { class: 'hint' }, 'Select all bonuses that apply to your build')
     );
 
     const cfgB = STATE.cfg.defpen.bonuses || {};
     const b = STATE.defpen.bonus;
 
-    const mkCheck = (key, label, valueStr, extraRight = null) => {
-      const box = el('div', { class: 'checkItem' },
-        el('div', { class: 'left' },
-          el('input', { type: 'checkbox', checked: !!b[key], 'data-key': `dp-${key}` }),
-          el('div', { class: 'nm', title: label }, label)
-        ),
-        el('div', { style: 'display:flex;align-items:center;gap:10px' },
-          extraRight,
+    const mkCheck = (key, label, valueStr, unitInput = null, unitLabel = '') => {
+      const checkbox = el('input', { type: 'checkbox', checked: !!b[key], 'data-key': `dp-${key}` });
+      const switchNode = el('label', { class: 'switch' }, checkbox, el('span', {}));
+      const box = el('div', { class: `checkItem${b[key] ? ' isActive' : ''}` },
+        el('div', { class: 'checkTop' },
+          el('div', { class: 'left' },
+            switchNode,
+            el('div', { class: 'nm', title: label }, label)
+          ),
           el('div', { class: 'val' }, valueStr)
-        )
+        ),
+        unitInput && b[key] ? el('div', { class: 'unitWrap' },
+          el('div', { class: 'hint unitLabel' }, unitLabel),
+          unitInput
+        ) : null
       );
 
-      const cb = qs('input[type="checkbox"]', box);
-      cb.addEventListener('change', () => {
-        b[key] = !!cb.checked;
+      const toggleBonus = (next) => {
+        checkbox.checked = !!next;
+        b[key] = checkbox.checked;
         renderPreserve();
+      };
+
+      switchNode.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+
+      checkbox.addEventListener('change', () => {
+        toggleBonus(checkbox.checked);
+      });
+
+      box.addEventListener('click', (e) => {
+        if (e.target?.closest?.('.unitWrap')) return;
+        if (e.target?.closest?.('.switch')) return;
+        e.preventDefault();
+        toggleBonus(!checkbox.checked);
       });
       return box;
     };
@@ -1122,55 +1330,65 @@
     const esilUnits = el('input', {
       type: 'number',
       class: 'input inlineNum',
-      min: '0',
+      min: '1',
       max: '6',
-      value: String(clampInt(b.esilUnits, 0, 6, 6)),
-      style: `display:${b.esil ? 'block' : 'none'}`,
+      value: String(clampInt(b.esilUnits, 1, 6, 6)),
       'data-key': 'dp-esil-units'
     });
     esilUnits.addEventListener('input', () => {
-      b.esilUnits = clampInt(esilUnits.value, 0, 6, 6);
+      b.esilUnits = clampInt(esilUnits.value, 1, 6, 6);
       renderPreserve();
     });
+    esilUnits.addEventListener('click', (e) => e.stopPropagation());
+    esilUnits.addEventListener('pointerdown', (e) => e.stopPropagation());
 
     const sianUnits = el('input', {
       type: 'number',
       class: 'input inlineNum',
-      min: '0',
+      min: '1',
       max: '6',
-      value: String(clampInt(b.sianUnits, 0, 6, 6)),
-      style: `display:${b.sian ? 'block' : 'none'}`,
+      value: String(clampInt(b.sianUnits, 1, 6, 6)),
       'data-key': 'dp-sian-units'
     });
     sianUnits.addEventListener('input', () => {
-      b.sianUnits = clampInt(sianUnits.value, 0, 6, 6);
+      b.sianUnits = clampInt(sianUnits.value, 1, 6, 6);
       renderPreserve();
     });
+    sianUnits.addEventListener('click', (e) => e.stopPropagation());
+    sianUnits.addEventListener('pointerdown', (e) => e.stopPropagation());
 
-    bonusCard.append(
-      el('div', { class: 'mt-3' },
-        el('div', { class: 'muted' }, 'Hunters'),
-        el('div', { class: 'bonusGrid mt-2' },
-          mkCheck('emma', 'Emma', `(+${(+cfgB.emma || 0).toFixed(2)}%)`),
-          mkCheck('gina', 'Gina', `(+${(+cfgB.gina || 0)}%)`),
-          mkCheck('esil', 'Esil', `(+${(+cfgB.esilPerFireUnit || 0)}% per Fire Unit)`, esilUnits),
-          mkCheck('sian', 'Sian Hilat', `(+${(+cfgB.sianPerDarkUnit || 0)}% per Dark Unit)`, sianUnits)
+    const bonusCard = el('div', { class: 'mt-3' },
+      el('div', { class: 'label accentLabel' }, 'Bonus Sources'),
+      el('div', { class: 'hint' }, 'Select every active source. Conditional units appear only when enabled.'),
+      el('div', { class: 'bonusSources' },
+        el('div', { class: 'bonusGroup' },
+          el('div', { class: 'bonusGroupTitle' }, 'Hunters'),
+          el('div', { class: 'bonusList' },
+            mkCheck('emma', 'Emma', `+${(+cfgB.emma || 0).toFixed(2)}%`),
+            mkCheck('gina', 'Gina', `+${(+cfgB.gina || 0)}%`),
+            mkCheck('esil', 'Esil', `+${(+cfgB.esilPerFireUnit || 0)}% per Fire unit`, esilUnits, 'Fire Hunters'),
+            mkCheck('sian', 'Sian Hilat', `+${(+cfgB.sianPerDarkUnit || 0)}% per Dark unit`, sianUnits, 'Dark Hunters')
+          )
         ),
-
-        el('div', { class: 'muted', style: 'margin-top:10px' }, 'Weapons'),
-        el('div', { class: 'bonusGrid mt-2' },
-          mkCheck('ennio', "Ennio's Roar", `(+${(+cfgB.ennio || 0)}%)`),
-          mkCheck('knightKiller', 'Knight Killer', `(+${(+cfgB.knightKiller || 0)}%)`)
+        el('div', { class: 'bonusGroup' },
+          el('div', { class: 'bonusGroupTitle' }, 'Weapons'),
+          el('div', { class: 'bonusList' },
+            mkCheck('ennio', "Ennio's Roar", `+${(+cfgB.ennio || 0)}%`),
+            mkCheck('knightKiller', 'Knight Killer', `+${(+cfgB.knightKiller || 0)}%`)
+          )
         ),
-
-        el('div', { class: 'muted', style: 'margin-top:10px' }, 'Artifact Sets'),
-        el('div', { class: 'bonusGrid mt-2' },
-          mkCheck('armed', 'Armed', `(+${(+cfgB.armed || 0)}%)`)
+        el('div', { class: 'bonusGroup' },
+          el('div', { class: 'bonusGroupTitle' }, 'Artifact Sets'),
+          el('div', { class: 'bonusList' },
+            mkCheck('armed', 'Armed', `+${(+cfgB.armed || 0)}%`),
+            mkCheck('architectBluePoison', "The Architect's Blue Poison", `+${(+cfgB.architectBluePoison || 0)}%`)
+          )
         ),
-
-        el('div', { class: 'muted', style: 'margin-top:10px' }, 'Shadows'),
-        el('div', { class: 'bonusGrid mt-2' },
-          mkCheck('beste', 'Beste', `(+${(+cfgB.beste || 0)}%)`)
+        el('div', { class: 'bonusGroup' },
+          el('div', { class: 'bonusGroupTitle' }, 'Shadows'),
+          el('div', { class: 'bonusList' },
+            mkCheck('beste', 'Beste', `+${(+cfgB.beste || 0)}%`)
+          )
         )
       )
     );
@@ -1180,8 +1398,8 @@
       class: 'input',
       min: '0',
       max: '9999',
+      step: '0.01',
       value: String(STATE.defpen.custom),
-      style: 'width:260px',
       'data-key': 'dp-custom'
     });
     inCustom.addEventListener('input', () => {
@@ -1191,64 +1409,59 @@
 
     cardInputs.append(
       bonusCard,
-      el('div', { class: 'card mt-3', style: 'background:rgba(15,23,42,.18)' },
-        el('div', { class: 'label' }, 'Custom Bonus Value (Optional)'),
-        el('div', { class: 'inRow' }, inCustom, el('div', { class: 'pill' }, '%')),
-        el('div', { class: 'hint' }, 'Add a custom percentage to the total (e.g., 3 to add 3%)')
+      el('div', { class: 'fieldStack mt-3' },
+        el('div', { class: 'label' }, 'Custom Bonus Value ', el('span', { class: 'muted' }, '(Optional)')),
+        el('div', { class: 'inputGroup three' }, el('div', { class: 'inputIcon' }, '+'), inCustom, el('div', { class: 'inputSuffix' }, '%')),
+        el('div', { class: 'hint' }, 'Add a custom additive percentage, such as 3 for +3%.')
       )
     );
 
-    const r = calcDefPen();
+    const r = calcDefensePen();
+    const formatSignedPct = (v) => (+v > 0 ? `+${formatPct(+v, 2)}` : '0%');
 
-    const results = el('div', { class: 'card hd mt-3' },
-      el('div', { class: 'title' }, '✅ Result')
+    const results = el('div', { class: 'card hd' },
+      el('div', { class: 'title' }, 'Results'),
+      el('div', { class: 'sub' }, 'Live totals update as your build changes.')
     );
 
-    const box = el('div', { class: 'resultsBox mt-3' },
+    const box = el('div', { class: 'resultsBox heroBox mt-3' },
       el('div', { class: 'resultsTitle' },
         el('div', { class: 'left' },
           el('div', { class: 'big' }, 'Total Defense Penetration'),
-          el('div', { class: 'small' }, 'Effective penetration against target')
+          el('div', { class: 'small' }, 'Effective penetration against the selected target.')
         ),
         el('div', { class: 'value' }, formatPct(r.total, 2))
       )
     );
 
-    const breakdown = el('div', { class: 'card mt-3', style: 'background:rgba(15,23,42,.18)' },
-      el('div', { class: 'sectionHead' },
-        el('div', { class: 'h' }, 'ℹ️ Breakdown'),
-        el('div', { class: 'muted' }, '')
-      ),
+    const flatNeededBox = el('div', { class: 'resultsBox flatBox mt-3' },
+      el('div', { class: 'resultsTitle' },
+        el('div', { class: 'left' },
+          el('div', { class: 'big' }, 'Flat Defense Penetration Needed for 100%'),
+          el('div', { class: 'small' }, 'Required flat stat after bonuses and custom value.')
+        ),
+        el('div', { class: 'value' }, formatInt(Math.ceil(r.flatNeeded)))
+      )
+    );
+
+    const breakdown = el('div', { class: 'resultsBox mt-3' },
+      el('div', { class: 'sectionHead' }, el('div', { class: 'h' }, 'Breakdown')),
       el('div', { class: 'bdBox' },
         el('div', { class: 'bdGrid' },
-          el('div', { class: 'bdItem' },
-            el('div', { class: 'bdLbl' }, 'SJW Defense Penetration'),
-            el('div', { class: 'bdVal' }, formatInt(r.flat))
-          ),
-          el('div', { class: 'bdItem' },
-            el('div', { class: 'bdLbl' }, 'Monster Level'),
-            el('div', { class: 'bdVal' }, String(r.lvl))
-          ),
-
-          el('div', { class: 'bdItem' },
-            el('div', { class: 'bdLbl' }, 'Base Defense Penetration %'),
-            el('div', { class: 'bdVal' }, formatPct(r.base, 2))
-          ),
-          el('div', { class: 'bdItem' },
-            el('div', { class: 'bdLbl' }, 'Bonus Defense Penetration %'),
-            el('div', { class: 'bdVal green' }, `+${formatPct(r.bonus, 2)}`)
-          ),
-
-          el('div', { class: 'bdItem' },
-            el('div', { class: 'bdLbl' }, 'Custom Bonus Value'),
-            el('div', { class: 'bdVal yellow' }, formatPct(r.custom, 0))
-          )
+          el('div', { class: 'bdItem' }, el('div', { class: 'bdLbl' }, 'SJW Defense Penetration'), el('div', { class: 'bdVal' }, formatInt(r.flat))),
+          el('div', { class: 'bdItem' }, el('div', { class: 'bdLbl' }, 'Monster Level'), el('div', { class: 'bdVal' }, String(r.lvl))),
+          el('div', { class: 'bdItem' }, el('div', { class: 'bdLbl' }, 'Base Defense Penetration'), el('div', { class: 'bdVal' }, formatPct(r.base, 2))),
+          el('div', { class: 'bdItem' }, el('div', { class: 'bdLbl' }, 'Bonus Defense Penetration'), el('div', { class: 'bdVal green' }, formatSignedPct(r.bonus))),
+          el('div', { class: 'bdItem' }, el('div', { class: 'bdLbl' }, 'Custom Bonus Value'), el('div', { class: 'bdVal yellow' }, formatSignedPct(r.custom)))
         )
       )
     );
 
-    results.append(box, breakdown);
-    root.append(cardInputs, results);
+    results.append(box, flatNeededBox, breakdown);
+    root.append(el('div', { class: 'calc-layout' },
+      el('div', { class: 'calc-left' }, cardInputs),
+      el('div', { class: 'calc-right' }, results)
+    ));
   }
 
   // --------------------------
@@ -1360,12 +1573,17 @@
 
       el('div', { class: 'adminSecTitle', style: 'margin-top:12px' }, 'Base precision'),
       mkNumRow('SJW base', cfg.precision.base.sjw, (v) => cfg.precision.base.sjw = clampInt(v, 0, 999999, 0), { min: 0, key: 'adm-sjwbase' }),
-      mkNumRow('Hunters base', cfg.precision.base.hunters, (v) => cfg.precision.base.hunters = clampInt(v, 0, 999999, 13010), { min: 0, key: 'adm-hbase' }),
+      mkNumRow('Hunters base', cfg.precision.base.hunters, (v) => cfg.precision.base.hunters = clampInt(v, 0, 999999, 12110), { min: 0, key: 'adm-hbase' }),
 
       el('div', { class: 'adminSecTitle', style: 'margin-top:12px' }, 'Weapon bonuses'),
       mkNumRow('R bonus', cfg.precision.weaponRarityBonus.r, (v) => cfg.precision.weaponRarityBonus.r = clampInt(v, 0, 999999, 1250), { min: 0, key: 'adm-wr' }),
       mkNumRow('SR bonus', cfg.precision.weaponRarityBonus.sr, (v) => cfg.precision.weaponRarityBonus.sr = clampInt(v, 0, 999999, 2000), { min: 0, key: 'adm-wsr' }),
-      mkNumRow('SSR bonus', cfg.precision.weaponRarityBonus.ssr, (v) => cfg.precision.weaponRarityBonus.ssr = clampInt(v, 0, 999999, 4000), { min: 0, key: 'adm-wssr' })
+      mkNumRow('SSR bonus', cfg.precision.weaponRarityBonus.ssr, (v) => cfg.precision.weaponRarityBonus.ssr = clampInt(v, 0, 999999, 4000), { min: 0, key: 'adm-wssr' }),
+
+      el('div', { class: 'adminSecTitle', style: 'margin-top:12px' }, 'Hunter training points'),
+      mkNumRow('1 point', cfg.precision.hunterTrainingPoints?.['1'] ?? 3065, (v) => cfg.precision.hunterTrainingPoints['1'] = clampInt(v, 0, 999999, 3065), { min: 0, key: 'adm-train-1' }),
+      mkNumRow('2 points', cfg.precision.hunterTrainingPoints?.['2'] ?? 6130, (v) => cfg.precision.hunterTrainingPoints['2'] = clampInt(v, 0, 999999, 6130), { min: 0, key: 'adm-train-2' }),
+      mkNumRow('3 points', cfg.precision.hunterTrainingPoints?.['3'] ?? 9195, (v) => cfg.precision.hunterTrainingPoints['3'] = clampInt(v, 0, 999999, 9195), { min: 0, key: 'adm-train-3' })
     );
 
     const sec2 = el('div', { class: 'adminSec' },
@@ -1383,6 +1601,7 @@
       mkNumRow("Ennio's Roar %", cfg.defpen.bonuses.ennio, (v) => cfg.defpen.bonuses.ennio = clampNum(v, 0, 999, 16), { min: 0, step: '0.01', key: 'adm-ennio' }),
       mkNumRow('Knight Killer %', cfg.defpen.bonuses.knightKiller, (v) => cfg.defpen.bonuses.knightKiller = clampNum(v, 0, 999, 24), { min: 0, step: '0.01', key: 'adm-kk' }),
       mkNumRow('Armed %', cfg.defpen.bonuses.armed, (v) => cfg.defpen.bonuses.armed = clampNum(v, 0, 999, 18), { min: 0, step: '0.01', key: 'adm-armed' }),
+      mkNumRow("The Architect's Blue Poison %", cfg.defpen.bonuses.architectBluePoison, (v) => cfg.defpen.bonuses.architectBluePoison = clampNum(v, 0, 999, 20), { min: 0, step: '0.01', key: 'adm-architect' }),
       mkNumRow('Beste %', cfg.defpen.bonuses.beste, (v) => cfg.defpen.bonuses.beste = clampNum(v, 0, 999, 18), { min: 0, step: '0.01', key: 'adm-beste' })
     );
 
