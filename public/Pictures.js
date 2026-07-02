@@ -186,7 +186,7 @@
 	}
 
 	async function uploadFiles(files, opts = {}) {
-		const list = Array.from(files || []).filter((f) => /\.(png|webp|jpe?g)$/i.test(f.name || ''));
+		const list = Array.from(files || []).filter((f) => /\.(png|webp|jpe?g|gif)$/i.test(f.name || ''));
 		if (!list.length) {
 			toast('No supported image files selected');
 			return;
@@ -306,22 +306,74 @@
 		const fileInput = el('input', {
 			type: 'file',
 			multiple: 'multiple',
-			accept: '.png,.webp,.jpg,.jpeg',
-			class: 'block w-full text-sm text-white ' +
-				'file:mr-3 file:rounded-xl file:border-0 file:px-3 file:py-2 file:font-semibold ' +
-				'file:bg-slate-800 file:text-slate-100 hover:file:bg-slate-700'
+			accept: '.png,.webp,.jpg,.jpeg,.gif',
+			class: 'sr-only'
 		});
 
 		const nameInput = el('input', {
 			type: 'text',
-			placeholder: 'Filename (auto from selected file)',
+			placeholder: 'Filename override (only for one selected file)',
 			class: 'w-full px-3 py-2 rounded-xl bg-slate-900/50 border border-slate-700 text-slate-100 placeholder:text-slate-400'
 		});
 
-		fileInput.addEventListener('change', () => {
-			const f = fileInput.files && fileInput.files[0];
-			if (!f) return;
-			nameInput.value = f.name;
+		let selectedFiles = [];
+
+		const selectedLine = el('div', { class: 'text-xs text-slate-300' }, 'No files selected');
+		const dropZone = el(
+			'button',
+			{
+				type: 'button',
+				class: 'w-full min-h-[170px] rounded-2xl border-2 border-dashed border-slate-600 bg-slate-950/35 px-4 py-6 text-center transition hover:border-yellow-400 hover:bg-yellow-400/10 focus:outline-none focus:ring-2 focus:ring-yellow-400/60',
+				onclick: () => fileInput.click()
+			},
+			el('div', { class: 'text-base font-extrabold text-slate-100' }, 'Choose or drop pictures'),
+			el('div', { class: 'mt-2 text-sm text-slate-300' }, 'You can select many files at once.'),
+			el('div', { class: 'mt-4 inline-flex items-center justify-center rounded-xl bg-yellow-400 px-4 py-2 text-sm font-extrabold text-slate-900' }, 'Select files')
+		);
+
+		function setSelectedFiles(files) {
+			selectedFiles = Array.from(files || []).filter((f) => /\.(png|webp|jpe?g|gif)$/i.test(f.name || ''));
+			if (!selectedFiles.length) {
+				nameInput.value = '';
+				nameInput.disabled = false;
+				selectedLine.textContent = 'No files selected';
+				return;
+			}
+
+			if (selectedFiles.length === 1) {
+				nameInput.disabled = false;
+				nameInput.value = selectedFiles[0].name;
+				selectedLine.textContent = selectedFiles[0].name;
+				return;
+			}
+
+			nameInput.value = '';
+			nameInput.disabled = true;
+			selectedLine.textContent = `${selectedFiles.length} files selected`;
+		}
+
+		fileInput.addEventListener('change', () => setSelectedFiles(fileInput.files));
+
+		for (const eventName of ['dragenter', 'dragover']) {
+			dropZone.addEventListener(eventName, (e) => {
+				e.preventDefault();
+				dropZone.classList.add('border-yellow-400', 'bg-yellow-400/10');
+			});
+		}
+
+		for (const eventName of ['dragleave', 'drop']) {
+			dropZone.addEventListener(eventName, (e) => {
+				e.preventDefault();
+				dropZone.classList.remove('border-yellow-400', 'bg-yellow-400/10');
+			});
+		}
+
+		dropZone.addEventListener('drop', (e) => {
+			if (!e.dataTransfer?.files?.length) return;
+			setSelectedFiles(e.dataTransfer.files);
+			try {
+				fileInput.files = e.dataTransfer.files;
+			} catch {}
 		});
 
 		const body = el('div', { class: 'space-y-3' },
@@ -329,6 +381,8 @@
 				'Upload to ',
 				el('span', { class: 'font-semibold text-slate-100' }, `/picture${subdirLine}`)
 			),
+			dropZone,
+			selectedLine,
 			fileInput,
 			nameInput,
 			el('div', { class: 'text-xs text-slate-300' },
@@ -341,13 +395,13 @@
 			confirmText: 'Upload',
 			customBody: body,
 			onConfirm: async () => {
-				if (!fileInput.files || !fileInput.files[0]) {
+				const files = selectedFiles.length ? selectedFiles : Array.from(fileInput.files || []);
+				if (!files.length) {
 					throw new Error('Pick a file first');
 				}
 
-				const firstFile = fileInput.files[0];
-				const finalName = (nameInput.value || '').trim() || firstFile.name;
-				await uploadFiles(fileInput.files, { filename: finalName });
+				const finalName = files.length === 1 ? ((nameInput.value || '').trim() || files[0].name) : '';
+				await uploadFiles(files, { filename: finalName });
 			}
 		});
 	}

@@ -1414,6 +1414,24 @@ function guessLocalPictureByName(name, pics, opts = {}) {
     const data = (STATE.data.shadows || []);
     if (!data.length) return;
 
+    const defaultOwnedRank = () => {
+      const bulkRank = String(STATE.bulk?.rank || '').trim();
+      if (bulkRank && bulkRank !== "Don't own") return bulkRank;
+      return rankOptionsFromConfig().find(v => v && v !== "Don't own") || 'Common';
+    };
+
+    const patchForBulkShadow = (name, nextPatch) => {
+      const prev = getShadowEntry(name);
+      const needsOwnedRank = (
+        (!prev.rank || prev.rank === "Don't own") &&
+        (
+          (nextPatch.growth !== undefined && nextPatch.growth !== "Don't own") ||
+          (nextPatch.armament !== undefined && nextPatch.armament !== "Don't own")
+        )
+      );
+      setShadowEntry(name, needsOwnedRank ? { rank: defaultOwnedRank(), ...nextPatch } : nextPatch);
+    };
+
     if (patch.rank !== undefined) {
       for (const s of data) {
         setShadowEntry(s.name, { rank: patch.rank });
@@ -1422,15 +1440,13 @@ function guessLocalPictureByName(name, pics, opts = {}) {
 
     if (patch.growth !== undefined) {
       for (const s of data) {
-        if (!isOwnedShadow(s.name)) continue;
-        setShadowEntry(s.name, { growth: patch.growth });
+        patchForBulkShadow(s.name, { growth: patch.growth });
       }
     }
 
     if (patch.armament !== undefined) {
       for (const s of data) {
-        if (!isOwnedShadow(s.name)) continue;
-        setShadowEntry(s.name, { armament: patch.armament });
+        patchForBulkShadow(s.name, { armament: patch.armament });
       }
     }
   }
@@ -2318,8 +2334,8 @@ function guessLocalPictureByName(name, pics, opts = {}) {
 
     const row1 = el('div', { class: 'flex flex-wrap gap-2 admin-form-row' });
     const inName = el('input', { class: 'h-10 px-3 rounded-xl border dark:border-slate-700 bg-slate-800 min-w-[240px]', placeholder: 'Name (unique)' });
-    const inImg1 = el('input', { class: 'h-10 px-3 rounded-xl border dark:border-slate-700 bg-slate-800 min-w-[320px] flex-1', placeholder: 'Image URL or /picture/Shadow/Shadows/*' });
-    const inImg2 = el('input', { class: 'h-10 px-3 rounded-xl border dark:border-slate-700 bg-slate-800 min-w-[320px] flex-1', placeholder: 'Build image URL or /picture/Shadow/Shadows/*' });
+    const selLocalImage = el('select', { class: 'h-10 px-3 rounded-xl border dark:border-slate-700 bg-slate-800 min-w-[320px] flex-1' });
+    selLocalImage.append(el('option', { value: '' }, 'Select local image... (Shadow)'));
 
     const btnAdd = el('button', {
       class: 'h-10 px-3 rounded-xl border bg-slate-800 text-white hover:bg-slate-700 border-slate-700 font-extrabold',
@@ -2328,8 +2344,8 @@ function guessLocalPictureByName(name, pics, opts = {}) {
 
     btnAdd.addEventListener('click', async () => {
       const name = (inName.value || '').trim();
-      const image = (inImg1.value || '').trim();
-      const image_build = (inImg2.value || '').trim();
+      const image = (selLocalImage.value || '').trim();
+      const image_build = image;
 
       if (!name || !image) {
         toast('Name + Link 1 required');
@@ -2349,34 +2365,22 @@ function guessLocalPictureByName(name, pics, opts = {}) {
       }
 
       inName.value = '';
-      inImg1.value = '';
-      inImg2.value = '';
+      selLocalImage.value = '';
 
       toast('Added ✅');
       await loadShadows();
       render();
     });
 
-    row1.append(inName, inImg1, inImg2, btnAdd);
+    row1.append(inName, selLocalImage, btnAdd);
     addWrap.append(row1);
-
-    const rowLocal = el('div', { class: 'flex flex-wrap gap-2 items-center' });
-    const selLocal1 = el('select', { class: 'h-10 px-3 rounded-xl border dark:border-slate-700 bg-slate-800 min-w-[320px] flex-1' });
-    const selLocal2 = el('select', { class: 'h-10 px-3 rounded-xl border dark:border-slate-700 bg-slate-800 min-w-[320px] flex-1' });
-    selLocal1.append(el('option', { value: '' }, 'Select local image... (Shadow)'));
-    selLocal2.append(el('option', { value: '' }, 'Select local build image... (Shadow)'));
-    rowLocal.append(el('div', { class: 'text-xs font-bold text-white w-full' }, 'Optional local picker (fills the fields above)'), selLocal1, selLocal2);
-    addWrap.append(rowLocal);
 
     (async () => {
       const pics = await listPictures('Shadow/Shadows');
       for (const p of pics) {
-        selLocal1.append(el('option', { value: p.path }, p.name));
-        selLocal2.append(el('option', { value: p.path }, p.name));
+        selLocalImage.append(el('option', { value: p.path }, p.name));
       }
     })();
-    selLocal1.addEventListener('change', () => { if (selLocal1.value) inImg1.value = selLocal1.value; });
-    selLocal2.addEventListener('change', () => { if (selLocal2.value) inImg2.value = selLocal2.value; });
 
     const list = el('div', { class: 'grid gap-2' });
     const data = (STATE.data.shadows || []);
@@ -2513,8 +2517,13 @@ function guessLocalPictureByName(name, pics, opts = {}) {
 
     function openEditShadowModal(s) {
       const inName = el('input', { class: 'h-10 px-3 rounded-xl border dark:border-slate-700 bg-slate-900', value: s.name || '' });
-      const inImg1 = el('input', { class: 'h-10 px-3 rounded-xl border dark:border-slate-700 bg-slate-900', value: s.image || '' });
-      const inImg2 = el('input', { class: 'h-10 px-3 rounded-xl border dark:border-slate-700 bg-slate-900', value: s.image_build || '' });
+      const currentImage = (s.image || s.image_build || '').trim();
+      const selImage = el('select', { class: 'h-10 px-3 rounded-xl border dark:border-slate-700 bg-slate-900' });
+      selImage.append(el('option', { value: '' }, 'Select local image... (Shadow)'));
+      if (currentImage) {
+        selImage.append(el('option', { value: currentImage }, currentImage));
+        selImage.value = currentImage;
+      }
 
       const save = el('button', {
         class: 'h-10 px-3 rounded-xl border bg-slate-800 text-white hover:bg-slate-700 border-slate-700 font-extrabold',
@@ -2522,45 +2531,30 @@ function guessLocalPictureByName(name, pics, opts = {}) {
       }, 'Save');
 
       const body = el('div', { class: 'grid gap-2' },
-        el('div', { class: 'text-sm text-slate-100' }, 'Name / Link1 / Link2'),
-        el('div', { class: 'text-xs text-white' }, 'Tip: use local /picture/Shadow/Shadows/* images'),
+        el('div', { class: 'text-sm text-slate-100' }, 'Name / Link 1'),
         el('div', { class: 'grid gap-2' },
           el('label', { class: 'text-xs font-bold text-white' }, 'Name'),
           inName,
           el('label', { class: 'text-xs font-bold text-white' }, 'Link 1 (image)'),
-          inImg1,
-          el('label', { class: 'text-xs font-bold text-white' }, 'Link 2 (build image)'),
-          inImg2,
-          (() => {
-            const wrap = el('div', { class: 'grid gap-2' });
-            const sel1 = el('select', { class: 'h-10 px-3 rounded-xl border dark:border-slate-700 bg-slate-900' });
-            const sel2 = el('select', { class: 'h-10 px-3 rounded-xl border dark:border-slate-700 bg-slate-900' });
-            sel1.append(el('option', { value: '' }, 'Select local image...'));
-            sel2.append(el('option', { value: '' }, 'Select local build image...'));
-            wrap.append(
-              el('label', { class: 'text-xs font-bold text-white' }, 'Local picker (optional)'),
-              sel1,
-              sel2
-            );
-            (async () => {
-              const pics = await listPictures('Shadow/Shadows');
-              for (const p of pics) {
-                sel1.append(el('option', { value: p.path }, p.name));
-                sel2.append(el('option', { value: p.path }, p.name));
-              }
-            })();
-            sel1.addEventListener('change', () => { if (sel1.value) inImg1.value = sel1.value; });
-            sel2.addEventListener('change', () => { if (sel2.value) inImg2.value = sel2.value; });
-            return wrap;
-          })()
+          selImage
         ),
         el('div', { class: 'flex justify-end pt-2' }, save)
       );
 
+      (async () => {
+        const pics = await listPictures('Shadow/Shadows');
+        const seen = new Set(Array.from(selImage.options).map(o => o.value));
+        for (const p of pics) {
+          if (seen.has(p.path)) continue;
+          selImage.append(el('option', { value: p.path }, p.name));
+        }
+        if (currentImage) selImage.value = currentImage;
+      })();
+
       save.addEventListener('click', async () => {
         const name = (inName.value || '').trim();
-        const image = (inImg1.value || '').trim();
-        const image_build = (inImg2.value || '').trim();
+        const image = (selImage.value || '').trim();
+        const image_build = image;
 
         if (!name) return toast('Name required');
 

@@ -11830,6 +11830,30 @@ function applyPictureOrder(names, category) {
   return ordered;
 }
 
+function pictureOrderNameFromRel(rel) {
+  const clean = String(rel || '').replace(/\\/g, '/').trim();
+  if (!clean) return '';
+  const first = clean.split('/')[0] || clean;
+  return path.parse(first).name;
+}
+
+function pictureOrderRankMap(category) {
+  const ordered = applyPictureOrder(listDirectPictureBaseNames(category), category);
+  return new Map(ordered.map((name, index) => [name, index]));
+}
+
+function sortPictureItems(items, category) {
+  const rank = pictureOrderRankMap(category);
+  return [...items].sort((a, b) => {
+    const aName = pictureOrderNameFromRel(a?.rel);
+    const bName = pictureOrderNameFromRel(b?.rel);
+    const aRank = rank.has(aName) ? rank.get(aName) : Number.MAX_SAFE_INTEGER;
+    const bRank = rank.has(bName) ? rank.get(bName) : Number.MAX_SAFE_INTEGER;
+    if (aRank !== bRank) return aRank - bRank;
+    return String(a?.rel || '').localeCompare(String(b?.rel || ''), undefined, { numeric: true, sensitivity: 'base' });
+  });
+}
+
 function normalizePictureOrder(category, inputOrder) {
   const existingNames = listDirectPictureBaseNames(category);
   const existing = new Set(existingNames);
@@ -11847,6 +11871,19 @@ function normalizePictureOrder(category, inputOrder) {
     out.push(name);
   }
   return out;
+}
+
+function promotePictureOrderName(category, name) {
+  const clean = String(name || '').trim();
+  if (!clean) return [];
+
+  const current = uniqueStrings(getGlobal(pictureOrderKey(category)));
+  const next = normalizePictureOrder(category, [
+    clean,
+    ...current.filter((x) => x !== clean)
+  ]);
+  setGlobal(pictureOrderKey(category), next);
+  return next;
 }
 
 function ensureDependentPictureFolders(category, filename) {
@@ -12034,7 +12071,8 @@ router.get('/api/admin/pictures/list', requireAdmin, (req, res) => {
 
   try {
     const dir = categoryRoot(category);
-    const items = listFilesRecursive(dir, dir).sort((a, b) => a.rel.localeCompare(b.rel));
+    const orderCategory = PICTURE_DYNAMIC_SUBTAB_SOURCES[category] || category;
+    const items = sortPictureItems(listFilesRecursive(dir, dir), orderCategory);
     return res.json({ ok: true, category, items, root: PICTURE_ROOT });
   } catch (e) {
     return res.status(400).json({ error: String(e.message || 'bad_request') });
@@ -12151,6 +12189,7 @@ router.post(
 
       fs.writeFileSync(dest, f.buffer);
       const createdFolders = subdir ? [] : ensureDependentPictureFolders(category, finalName);
+      if (!subdir) promotePictureOrderName(category, path.parse(finalName).name);
       return res.json({ ok: true, rel, createdFolders });
     } catch (e) {
       return res.status(400).json({ error: String(e.message || 'bad_request') });

@@ -615,7 +615,7 @@
       .tbl{width:100%;border-collapse:separate;border-spacing:0 8px;min-width:980px}
       .tbl th{font-size:12px;text-align:left;opacity:.85;color:rgba(148,163,184,.92)}
       .tbl td{vertical-align:middle}
-      .iconMini{width:20px;height:20px;object-fit:contain;opacity:.98;filter:drop-shadow(0 8px 10px rgba(0,0,0,.35))}
+      .iconMini{width:30px;height:30px;object-fit:contain;opacity:.98;filter:drop-shadow(0 8px 10px rgba(0,0,0,.35))}
       .pageIcon{height:18px;width:auto;object-fit:contain}
 
       @media(max-width: 720px){
