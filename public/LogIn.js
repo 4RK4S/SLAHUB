@@ -819,6 +819,7 @@
     if (p === "/hunters") return "Opening Hunters\u2026";
     if (p === "/hunter-weapons") return "Opening Hunter Weapons\u2026";
     if (p === "/sjw-weapons") return "Opening Sung Weapons\u2026";
+    if (p === "/sjw-skills") return "Opening Sung Skills\u2026";
     if (p === "/shadows") return "Opening Shadows\u2026";
     if (isChildRoute(p, "/successors")) return "Loading Successor details\u2026";
 
@@ -857,6 +858,7 @@
     if (p === "/hunters") return ["Hunter.js"];
     if (p === "/hunter-weapons") return ["HunterWeapons.js"];
     if (p === "/sjw-weapons") return ["SungWeapons.js"];
+    if (p === "/sjw-skills") return ["SungSkills.js"];
     if (p === "/shadows") return ["Shadow.js"];
     if (isChildRoute(p, "/successors")) return ["Details_Successors.js"];
 
@@ -932,6 +934,7 @@
 
     if (p === "/sjw-weapons") return "/sjw-weapons";
     if (isChildRoute(p, "/sjw-weapons")) return "/sjw-weapons-details";
+    if (p === "/sjw-skills") return "/sjw-skills";
 
     if (p === "/shadows") return "/shadows";
     if (isChildRoute(p, "/shadows")) return "/shadows-details";
@@ -1004,6 +1007,12 @@
       title: "Coming soon",
       icon: "🗡️",
       subtitle: "The Sung Jinwoo Weapon details page is currently being prepared.",
+      note: "Please check back later."
+    },
+    "/sjw-skills": {
+      title: "Coming soon",
+      icon: "Skills",
+      subtitle: "The Sung Jinwoo Skills page is currently being prepared.",
       note: "Please check back later."
     },
     "/shadows": {
@@ -1132,6 +1141,7 @@
 
     const v = flags ? flags[key] : undefined;
     if (typeof v === "boolean") return v;
+    if (key === "/sjw-skills") return false;
     if (key === "/successors") return false;
     if (key === "/suggestions") return false;
     return true;
@@ -1626,6 +1636,26 @@
         return;
       }
       if (typeof window.__sung_weapons_mount === "function") await window.__sung_weapons_mount(cleanPath);
+      if (!isStale()) hideUILoading();
+      return;
+    }
+
+    // --------- SJW / SUNG SKILLS ---------
+    if (cleanPath === "/sjw-skills") {
+      try {
+        const preloadResult = await scriptPreloadPromise;
+        if (preloadResult instanceof Error) throw preloadResult;
+        if (isStale()) return;
+      } catch (e) {
+        console.error(e);
+        if (!isStale()) {
+          const c = document.getElementById("content");
+          if (c) c.innerHTML = `<div class="text-center text-slate-300">Failed to load Sung Skills.</div>`;
+          hideUILoading();
+        }
+        return;
+      }
+      if (typeof window.__sung_skills_mount === "function") await window.__sung_skills_mount(cleanPath);
       if (!isStale()) hideUILoading();
       return;
     }

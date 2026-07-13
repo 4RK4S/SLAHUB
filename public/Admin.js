@@ -652,33 +652,70 @@
   // --------------------------
   const LS_TAB = 'admin.ui.tab';
 
-  const COMING_PAGES = [
-    { key: '/dashboard', label: 'Dashboard' },
-    { key: '/hunters', label: 'Hunters' },
-    { key: '/hunters-details', label: 'Hunters - Details' },
-    { key: '/hunter-weapons', label: 'Hunters - Weapons' },
-    { key: '/hunter-weapons-details', label: 'Hunters - Weapons Details' },
-    { key: '/sjw-weapons', label: 'Sung Jinwoo - Weapons' },
-    { key: '/sjw-weapons-details', label: 'Sung Jinwoo - Weapons Details' },
-    { key: '/shadows', label: 'Shadows' },
-    { key: '/shadows-details', label: 'Shadows - Details' },
-    { key: '/successors', label: 'Successors' },
-    { key: '/successors-details', label: 'Successors - Details' },
-    { key: '/gems', label: 'Gems' },
-    { key: '/tier-list', label: 'Tier List' },
-    { key: '/special-commission', label: 'Special Commission' },
-    { key: '/cores', label: 'Cores' },
-    { key: '/artifacts', label: 'Artifacts' },
-    { key: '/blessing-stones', label: 'Blessing Stones' },
-    { key: '/pvp', label: 'PvP' },
-    { key: '/mini-game', label: 'Mini Game' },
-    { key: '/hunter-guess', label: 'Hunter Guess' },
-    { key: '/events', label: 'Events' },
-    { key: '/members', label: 'Members' },
-    { key: '/calculator', label: 'Calculator' },
-    { key: '/posts', label: 'Posts' },
-    { key: '/road-map', label: 'Road Map' },
-    { key: '/suggestions', label: 'Suggestions' },
+  const COMING_PAGE_GROUPS = [
+    {
+      group: 'Main',
+      icon: 'fa-solid fa-house',
+      items: [
+        { key: '/dashboard', label: 'Dashboard' },
+      ],
+    },
+    {
+      group: 'Collection',
+      icon: 'fa-solid fa-layer-group',
+      items: [
+        { key: '/hunters', label: 'Hunters' },
+        { key: '/hunters-details', label: 'Hunters - Details' },
+        { key: '/hunter-weapons', label: 'Hunters - Weapons' },
+        { key: '/hunter-weapons-details', label: 'Hunters - Weapons Details' },
+        { key: '/sjw-weapons', label: 'Sung Jinwoo - Weapons' },
+        { key: '/sjw-weapons-details', label: 'Sung Jinwoo - Weapons Details' },
+        { key: '/shadows', label: 'Shadows' },
+        { key: '/shadows-details', label: 'Shadows - Details' },
+        { key: '/successors', label: 'Successors', defaultEnabled: false },
+        { key: '/successors-details', label: 'Successors - Details' },
+      ],
+    },
+    {
+      group: 'Systems',
+      icon: 'fa-solid fa-gears',
+      items: [
+        { key: '/sjw-skills', label: 'Sung Jinwoo - Skills', defaultEnabled: false },
+        { key: '/blessing-stones', label: 'Blessing Stones' },
+        { key: '/cores', label: 'Cores' },
+        { key: '/artifacts', label: 'Artifacts' },
+        { key: '/gems', label: 'Gems' },
+        { key: '/tier-list', label: 'Tier List' },
+        { key: '/special-commission', label: 'Special Commission' },
+        { key: '/pvp', label: 'PvP' },
+        { key: '/calculator', label: 'Calculator' },
+      ],
+    },
+    {
+      group: 'Mini Games',
+      icon: 'fa-solid fa-gamepad',
+      items: [
+        { key: '/mini-game', label: 'Mini Game' },
+        { key: '/hunter-guess', label: 'Hunter Guess' },
+      ],
+    },
+    {
+      group: 'Community',
+      icon: 'fa-solid fa-comments',
+      items: [
+        { key: '/posts', label: 'Posts' },
+        { key: '/road-map', label: 'Road Map' },
+        { key: '/suggestions', label: 'Tickets & Suggestions', defaultEnabled: false },
+      ],
+    },
+    {
+      group: 'Admin / Extra',
+      icon: 'fa-solid fa-user-shield',
+      items: [
+        { key: '/events', label: 'Events' },
+        { key: '/members', label: 'Members' },
+      ],
+    },
   ];
 
   const MENU_VISIBILITY_GROUPS = [
@@ -697,12 +734,13 @@
       group: 'Systems',
       icon: 'fa-solid fa-gears',
       items: [
+        { key: 'sungSkills', label: 'Sung Jinwoo - Skills' },
+        { key: 'blessingStones', label: 'Blessing Stones' },
+        { key: 'cores', label: 'Cores' },
+        { key: 'artifacts', label: 'Artifacts' },
         { key: 'gems', label: 'Gems' },
         { key: 'tierList', label: 'Tier List' },
         { key: 'specialCommission', label: 'Special Commission' },
-        { key: 'cores', label: 'Cores' },
-        { key: 'artifacts', label: 'Artifacts' },
-        { key: 'blessingStones', label: 'Blessing Stones' },
         { key: 'pvp', label: 'PvP' },
         { key: 'calculator', label: 'Calculator' },
       ],
@@ -1464,8 +1502,9 @@
     );
     card.append(topRow);
 
-    for (const p of COMING_PAGES) {
-      const enabled = (typeof flags[p.key] === 'boolean') ? flags[p.key] : true;
+    const appendComingSoonPage = (target, p) => {
+      const defaultEnabled = p.defaultEnabled !== false;
+      const enabled = (typeof flags[p.key] === 'boolean') ? flags[p.key] : defaultEnabled;
 
       const left = el('div', {},
         el('div', { class: 'cs-name' }, p.label),
@@ -1502,7 +1541,21 @@
         el('div', { class: 'admin-row' }, toggleBtn)
       );
 
-      card.append(row);
+      target.append(row);
+    };
+
+    for (const group of COMING_PAGE_GROUPS) {
+      const groupEl = el('div', { class: 'menu-vis-group' });
+      groupEl.append(el('div', { class: 'menu-vis-group-head' },
+        el('i', { class: group.icon || 'fa-solid fa-circle' }),
+        el('span', {}, group.group)
+      ));
+
+      for (const p of group.items) {
+        appendComingSoonPage(groupEl, p);
+      }
+
+      card.append(groupEl);
     }
 
     root.append(card);

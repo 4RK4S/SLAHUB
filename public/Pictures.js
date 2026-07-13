@@ -122,6 +122,7 @@
 		SGWeapon_Skin: 'SGWeapon',
 		SGWeapon_Description_Pictures: 'SGWeapon',
 		SGWeapon_Skill: 'SGWeapon',
+		Rune: 'Rune',
 	};
 
 	function getSubtabs(category) {

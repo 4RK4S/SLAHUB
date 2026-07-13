@@ -149,12 +149,13 @@ const NAV_GROUPS_PUBLIC = [
     group: "Systems",
     icon: "fa-solid fa-gears",
     items: [
+      { label: "Sung Jinwoo - Skills", icon: "fa-solid fa-burst", path: "/sjw-skills", menuKey: "sungSkills" },
+      { label: "Blessing Stones", icon: "fa-solid fa-octagon", path: "/blessing-stones", menuKey: "blessingStones" },
+      { label: "Cores", icon: "fa-solid fa-life-ring", path: "/cores", menuKey: "cores" },
+      { label: "Artifacts", icon: "fa-solid fa-shirt", path: "/artifacts", menuKey: "artifacts" },
       { label: "Gems", icon: "fa-solid fa-gem", path: "/gems", menuKey: "gems" },
       { label: "Tier List", icon: "fa-solid fa-ranking-star", path: "/tier-list", menuKey: "tierList" },
       { label: "Special Commission", icon: "fa-solid fa-clipboard-list", path: "/special-commission", menuKey: "specialCommission" },
-      { label: "Cores", icon: "fa-solid fa-life-ring", path: "/cores", menuKey: "cores" },
-      { label: "Artifacts", icon: "fa-solid fa-shirt", path: "/artifacts", menuKey: "artifacts" },
-      { label: "Blessing Stones", icon: "fa-solid fa-octagon", path: "/blessing-stones", menuKey: "blessingStones" },
       { label: "PvP", icon: "fa-solid fa-skull-crossbones", path: "/pvp", menuKey: "pvp" },
       { label: "Calculator", icon: "fa-solid fa-calculator", path: "/calculator", menuKey: "calculator" },
     ],
@@ -1895,6 +1896,7 @@ function mountHome(){
     p === "/pictures" || p.startsWith("/pictures/") ||
     p === "/mini-game" || p.startsWith("/mini-game/") ||
     p === "/hunter-guess" || p.startsWith("/hunter-guess/") ||
+    p === "/sjw-skills" || p.startsWith("/sjw-skills/") ||
     p === "/sjw-weapons" || p.startsWith("/sjw-weapons/") ||
     p === "/hunter-weapons" || p.startsWith("/hunter-weapons/") ||
     p === "/shadows" || p.startsWith("/shadows/") ||

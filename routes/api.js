@@ -4178,6 +4178,7 @@ const MENU_VISIBILITY_DEFAULTS = {
   hunters: true,
   hunterWeapons: true,
   sungWeapons: true,
+  sungSkills: true,
   shadows: true,
   successors: true,
   gems: true,
@@ -11766,7 +11767,8 @@ const PICTURE_DYNAMIC_SUBTAB_SOURCES = {
   HWeapon_Skin: 'HWeapon',
   SGWeapon_Skin: 'SGWeapon',
   SGWeapon_Description_Pictures: 'SGWeapon',
-  SGWeapon_Skill: 'SGWeapon'
+  SGWeapon_Skill: 'SGWeapon',
+  Rune: 'Rune'
 };
 const PICTURE_DEPENDENT_FOLDERS = {
   Hunter: ['Hunter_Skin', 'Hunter_Skill'],
@@ -11811,6 +11813,612 @@ function listDirectPictureBaseNames(category) {
   }
 
   return names.sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
+}
+
+function listDirectPictureFolderNames(category) {
+  const dir = categoryRoot(category);
+  if (!fs.existsSync(dir)) return [];
+
+  return fs.readdirSync(dir, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
+}
+
+function picturePublicUrl(category, rel) {
+  const c = safeSeg(category);
+  const r = safeSeg(rel);
+  return `/picture/${c}/${r.split('/').map(encodeURIComponent).join('/')}`;
+}
+
+function normalizePictureToken(value) {
+  return String(value || '')
+    .toLowerCase()
+    .replace(/\.[a-z0-9]+$/i, '')
+    .replace(/^mythic_rune_/i, '')
+    .replace(/[^a-z0-9]+/g, '');
+}
+
+function runeImagePayload(category, rel, item = {}) {
+  const cleanRel = String(rel || '').replace(/\\/g, '/');
+  const name = cleanRel.split('/').pop() || '';
+  const baseName = path.parse(name).name;
+  return {
+    rel: cleanRel,
+    name,
+    baseName,
+    key: normalizePictureToken(baseName),
+    url: picturePublicUrl(category, cleanRel),
+    size: item.size || 0,
+    mtimeMs: item.mtimeMs || 0
+  };
+}
+
+function coerceRuneMainCount(value, fileCount) {
+  const n = Number(value);
+  if (Number.isFinite(n)) {
+    const fixed = Math.floor(n);
+    if (fixed === 4 || fixed === 5) return Math.min(fixed, Math.max(0, fileCount));
+  }
+  return null;
+}
+
+function inferRuneMainCount(files) {
+  const count = Array.isArray(files) ? files.length : 0;
+  if (count <= 0) return 0;
+  if (count <= 4) return count;
+
+  const fifthToken = normalizePictureToken(files[4]?.baseName || files[4]?.name);
+  if (/(desc|description|effect|status|buff|debuff|freeze|burn|bleed|poison|stun|shield|interrupt)/i.test(fifthToken)) {
+    return 4;
+  }
+
+  return 5;
+}
+
+function runeMainCount(value, files) {
+  const explicit = coerceRuneMainCount(value, Array.isArray(files) ? files.length : 0);
+  if (explicit !== null) return explicit;
+  return inferRuneMainCount(files);
+}
+
+function descriptionImageRuneIndex(extra, mainRunes) {
+  const token = normalizePictureToken(extra?.baseName || extra?.name);
+  if (!token) return -1;
+
+  const ordinal = token.match(/(?:^|desc|description|effect|extra|rune)(0?[1-5])(?:[^0-9]|$)/i)
+    || token.match(/^(0?[1-5])(?:[^0-9]|$)/i);
+  if (ordinal) {
+    const idx = Number(ordinal[1]) - 1;
+    if (idx >= 0 && idx < mainRunes.length) return idx;
+  }
+
+  let best = { index: -1, score: 0 };
+  mainRunes.forEach((rune, index) => {
+    const runeToken = normalizePictureToken(rune?.baseName || rune?.name);
+    if (!runeToken) return;
+    const score = token.includes(runeToken)
+      ? runeToken.length
+      : (runeToken.includes(token) ? token.length : 0);
+    if (score > best.score) best = { index, score };
+  });
+
+  return best.index;
+}
+
+function buildRuneSkillPayload(skillFolder, opts = {}) {
+  const folder = safeSeg(skillFolder);
+  const dir = resolveInCategory('Rune', folder);
+  const mainCountOverride = opts.mainCount;
+
+  if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) {
+    return null;
+  }
+
+  const files = sortPictureItems(listFilesRecursive(dir, dir), 'Rune')
+    .map((item) => runeImagePayload('Rune', `${folder}/${item.rel}`.replace(/\\/g, '/'), item));
+
+  const mainCount = runeMainCount(mainCountOverride, files);
+  const mainImages = files.slice(0, mainCount);
+  const descriptionImages = files.slice(mainCount);
+  const unassignedDescriptionImages = [];
+
+  const runes = mainImages.map((image, index) => ({
+    index,
+    name: image.baseName,
+    image,
+    descriptionImages: []
+  }));
+
+  for (const image of descriptionImages) {
+    const idx = descriptionImageRuneIndex(image, mainImages);
+    if (idx >= 0 && runes[idx]) runes[idx].descriptionImages.push(image);
+    else unassignedDescriptionImages.push(image);
+  }
+
+  return {
+    skill: folder,
+    folder,
+    rel: folder,
+    mainCount,
+    totalImages: files.length,
+    runes,
+    descriptionImages,
+    unassignedDescriptionImages,
+    images: files
+  };
+}
+
+function buildRuneSkillsIndex(opts = {}) {
+  const folders = applyPictureOrder(listDirectPictureFolderNames('Rune'), 'Rune');
+  const skills = [];
+  const bySkill = {};
+
+  for (const folder of folders) {
+    const item = buildRuneSkillPayload(folder, opts);
+    if (!item) continue;
+    skills.push(item);
+    bySkill[folder] = item;
+  }
+
+  return { skills, bySkill };
+}
+
+const SUNG_SKILLS_KEY = 'sungSkills:catalog:v1';
+const SUNG_SKILL_TYPES = new Set(['Regular', 'Break', 'QTE', 'Ultimate']);
+const SUNG_RUNE_ELEMENTS = new Set(['', 'Fire', 'Water', 'Wind', 'Light', 'Dark']);
+
+const SUNG_SKILLS_SEED = [
+  {
+    name: 'Death',
+    folder: 'Death',
+    type: 'Ultimate',
+    runes: [
+      {
+        name: 'Death',
+        element: 'Dark',
+        description: [
+          { type: 'text', text: 'Deals massive Dark damage to enemies in range.' },
+          { type: 'effect', tag: '[Freeze]', lines: ['Interrupts the target.', 'Duration: 2 second(s)'] }
+        ]
+      },
+      { name: 'Extinction', description: [{ type: 'text', text: 'Deals heavy damage and increases final-hit pressure.' }] },
+      { name: 'Reap', description: [{ type: 'text', text: 'Pulls damage into a focused execution window.' }] },
+      { name: 'Liberation', description: [{ type: 'text', text: 'Strengthens the finishing strike after skill activation.' }] }
+    ]
+  },
+  {
+    name: 'Armor Break',
+    folder: 'Armor Break',
+    type: 'Break',
+    runes: [
+      { name: 'Ascension Break', hasBreak: true, description: [{ type: 'text', text: 'Deals Break damage and launches the target.' }] },
+      { name: 'Chained Break', hasBreak: true, description: [{ type: 'text', text: 'Deals Break damage in rapid chained hits.' }] },
+      { name: 'Countering Break', hasBreak: true, description: [{ type: 'text', text: 'Counterattacks and deals increased Break damage.' }] },
+      { name: 'Enlightened Break', hasBreak: true, description: [{ type: 'text', text: 'Improves Break pressure and recovery timing.' }] }
+    ]
+  },
+  {
+    name: 'Dagger Rush',
+    folder: 'Dagger Rush',
+    type: 'Regular',
+    runes: [
+      { name: 'Rush', description: [{ type: 'text', text: 'Rushes forward and attacks enemies in the path.' }] },
+      { name: 'Quickstrike', description: [{ type: 'text', text: 'Performs a faster strike with reduced downtime.' }] },
+      { name: 'Surprise Attack', description: [{ type: 'text', text: 'Attacks from close range and improves burst timing.' }] },
+      { name: 'Veiled Strike', description: [{ type: 'text', text: 'Deals damage while improving repositioning safety.' }] }
+    ]
+  },
+  {
+    name: 'Mutilate',
+    folder: 'Mutilate',
+    type: 'Regular',
+    runes: [
+      { name: 'Internal Wound', description: [{ type: 'text', text: 'Deals damage and leaves the target vulnerable.' }] },
+      { name: 'Magnifying Slashes', description: [{ type: 'text', text: 'Adds repeated slashes to the attack sequence.' }] },
+      { name: 'Multishadow Strike', description: [{ type: 'text', text: 'Summons shadow strikes around the target.' }] },
+      { name: 'Silent Strike', description: [{ type: 'text', text: 'Deals quick damage with a compact animation window.' }] }
+    ]
+  },
+  {
+    name: 'Commanders Touch',
+    folder: 'Commanders Touch',
+    type: 'QTE',
+    runes: [
+      { name: 'Black Hole', description: [{ type: 'text', text: 'Pulls enemies together and deals area damage.' }] },
+      { name: 'Vacuum Wave', description: [{ type: 'text', text: 'Sends a wave forward and controls enemy movement.' }] },
+      { name: 'Absorption', description: [{ type: 'text', text: 'Draws in enemies before the finishing hit.' }] },
+      { name: 'Overshadow', description: [{ type: 'text', text: 'Adds shadow damage to the control effect.' }] }
+    ]
+  },
+  {
+    name: 'Vertical Arts',
+    folder: 'Vertical Arts',
+    type: 'Regular',
+    runes: [
+      { name: 'Strike', description: [{ type: 'text', text: 'Performs a clean vertical slash.' }] },
+      { name: 'Severing Flash', description: [{ type: 'text', text: 'Adds a flash follow-up after the slash.' }] },
+      { name: 'Sonic Explosion', description: [{ type: 'text', text: 'Creates an explosive impact around the strike.' }] },
+      { name: 'Storm', description: [{ type: 'text', text: 'Extends the attack into a multi-hit storm.' }] }
+    ]
+  },
+  {
+    name: 'Crushing Blow',
+    folder: 'Crushing Blow',
+    type: 'Break',
+    runes: [
+      { name: 'Earth Shock', hasBreak: true, description: [{ type: 'text', text: 'Deals Break damage with a ground impact.' }] },
+      { name: 'Pummel', description: [{ type: 'text', text: 'Adds repeated heavy hits.' }] },
+      { name: 'Percussion', description: [{ type: 'text', text: 'Creates a shockwave on impact.' }] },
+      { name: 'Detonation', description: [{ type: 'text', text: 'Triggers an explosive Break hit.' }] }
+    ]
+  },
+  {
+    name: 'The Huntsman',
+    folder: 'The Huntsman',
+    type: 'QTE',
+    runes: [
+      { name: 'Crosshairs', description: [{ type: 'text', text: 'Marks the target and fires a focused shot.' }] },
+      { name: 'On Point', description: [{ type: 'text', text: 'Improves precision and single-target damage.' }] },
+      { name: 'Hone In', description: [{ type: 'text', text: 'Tracks the target before the attack lands.' }] },
+      { name: 'Bombardment', description: [{ type: 'text', text: 'Adds multiple projectiles to the attack.' }] }
+    ]
+  }
+];
+
+function slugId(value, fallback = 'item') {
+  const s = String(value || '')
+    .trim()
+    .toLowerCase()
+    .replace(/['"]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  return s || fallback;
+}
+
+function uniqueId(base, used) {
+  const root = slugId(base);
+  let id = root;
+  let n = 2;
+  while (used.has(id)) {
+    id = `${root}-${n}`;
+    n += 1;
+  }
+  used.add(id);
+  return id;
+}
+
+function normalizeRuneRel(value, folder = '') {
+  const raw = String(value || '').replace(/\\/g, '/').trim();
+  if (!raw) return '';
+  if (/^https?:\/\//i.test(raw)) return '';
+  let rel = raw
+    .replace(/^\/?picture\/Rune\//i, '')
+    .replace(/^Rune\//i, '')
+    .replace(/^\/+/, '');
+  if (folder) {
+    const prefix = `${folder}/`;
+    if (!rel.includes('/') && !rel.startsWith(prefix)) rel = `${prefix}${rel}`;
+  }
+  try {
+    return safeSeg(rel);
+  } catch (_) {
+    return '';
+  }
+}
+
+function runeUrlFromRel(rel) {
+  const clean = normalizeRuneRel(rel);
+  return clean ? picturePublicUrl('Rune', clean) : '';
+}
+
+function sanitizeSungDescriptionBlock(input) {
+  const src = (input && typeof input === 'object') ? input : {};
+  const type = String(src.type || '').trim().toLowerCase() === 'effect' ? 'effect' : 'text';
+
+  if (type === 'effect') {
+    const linesRaw = Array.isArray(src.lines)
+      ? src.lines
+      : String(src.text || '')
+        .split(/\r?\n/)
+        .map((line) => line.trim())
+        .filter(Boolean);
+    return {
+      type: 'effect',
+      tag: String(src.tag || '').trim(),
+      imageRel: normalizeRuneRel(src.imageRel || src.image || src.imageUrl || ''),
+      lines: linesRaw.map((line) => String(line || '').trim()).filter(Boolean).slice(0, 12)
+    };
+  }
+
+  return {
+    type: 'text',
+    text: String(src.text || '').trim()
+  };
+}
+
+function hydrateSungDescriptionBlock(block) {
+  const b = sanitizeSungDescriptionBlock(block);
+  if (b.type === 'effect') {
+    return { ...b, imageUrl: runeUrlFromRel(b.imageRel) };
+  }
+  return b;
+}
+
+function sanitizeSungRune(input, index, usedRuneIds, folder = '') {
+  const src = (input && typeof input === 'object') ? input : {};
+  const name = String(src.name || '').trim() || `Rune ${index + 1}`;
+  const element = SUNG_RUNE_ELEMENTS.has(String(src.element || '').trim()) ? String(src.element || '').trim() : '';
+  const description = Array.isArray(src.description)
+    ? src.description.map(sanitizeSungDescriptionBlock).filter((block) => block.type === 'effect' || block.text)
+    : [];
+
+  return {
+    id: uniqueId(src.id || name, usedRuneIds),
+    name,
+    imageRel: normalizeRuneRel(src.imageRel || src.image || src.imageUrl || '', folder),
+    element,
+    hasBreak: !!src.hasBreak,
+    order: Number.isFinite(Number(src.order)) ? Math.floor(Number(src.order)) : index,
+    description
+  };
+}
+
+function hydrateSungRune(rune) {
+  const imageRel = normalizeRuneRel(rune.imageRel);
+  return {
+    ...rune,
+    imageRel,
+    imageUrl: runeUrlFromRel(imageRel),
+    description: (Array.isArray(rune.description) ? rune.description : []).map(hydrateSungDescriptionBlock)
+  };
+}
+
+function sanitizeSungSkill(input, index, usedSkillIds) {
+  const src = (input && typeof input === 'object') ? input : {};
+  const name = String(src.name || '').trim() || `Skill ${index + 1}`;
+  const folder = String(src.folder || src.name || name).replace(/\\/g, '/').trim();
+  const safeFolder = (() => {
+    try { return safeSeg(folder); } catch (_) { return slugId(folder, name); }
+  })();
+  const type = SUNG_SKILL_TYPES.has(String(src.type || '').trim()) ? String(src.type || '').trim() : 'Regular';
+  const usedRuneIds = new Set();
+  const runes = (Array.isArray(src.runes) ? src.runes : [])
+    .map((rune, runeIndex) => sanitizeSungRune(rune, runeIndex, usedRuneIds, safeFolder))
+    .sort((a, b) => (a.order - b.order) || a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }))
+    .map((rune, runeIndex) => ({ ...rune, order: runeIndex }));
+  const description = Array.isArray(src.description)
+    ? src.description.map(sanitizeSungDescriptionBlock).filter((block) => block.type === 'effect' || block.text)
+    : [];
+
+  return {
+    id: uniqueId(src.id || name, usedSkillIds),
+    name,
+    folder: safeFolder,
+    type,
+    imageRel: normalizeRuneRel(src.imageRel || src.image || src.imageUrl || '', safeFolder),
+    order: Number.isFinite(Number(src.order)) ? Math.floor(Number(src.order)) : index,
+    description,
+    runes
+  };
+}
+
+function hydrateSungSkill(skill) {
+  const imageRel = normalizeRuneRel(skill.imageRel);
+  return {
+    ...skill,
+    imageRel,
+    imageUrl: runeUrlFromRel(imageRel),
+    description: (Array.isArray(skill.description) ? skill.description : []).map(hydrateSungDescriptionBlock),
+    runes: (Array.isArray(skill.runes) ? skill.runes : []).map(hydrateSungRune)
+  };
+}
+
+function sanitizeSungSkillsCatalog(input) {
+  const src = (input && typeof input === 'object') ? input : {};
+  const usedSkillIds = new Set();
+  const skills = (Array.isArray(src.skills) ? src.skills : [])
+    .map((skill, index) => sanitizeSungSkill(skill, index, usedSkillIds))
+    .sort((a, b) => (a.order - b.order) || a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }))
+    .map((skill, index) => ({ ...skill, order: index }));
+
+  return { version: 1, skills };
+}
+
+function hydrateSungSkillsCatalog(catalog) {
+  const clean = sanitizeSungSkillsCatalog(catalog);
+  return {
+    ...clean,
+    skills: clean.skills.map(hydrateSungSkill),
+    meta: {
+      skillCount: clean.skills.length,
+      runeCount: clean.skills.reduce((sum, skill) => sum + skill.runes.length, 0),
+      breakIcon: '/picture/Rune/break.png',
+      elements: {
+        Fire: '/picture/Element/Fires.png',
+        Water: '/picture/Element/Waters.png',
+        Wind: '/picture/Element/Winds.png',
+        Light: '/picture/Element/Lights.png',
+        Dark: '/picture/Element/Darkness.png'
+      }
+    }
+  };
+}
+
+function seedSungSkillsCatalog() {
+  const seeded = SUNG_SKILLS_SEED.map((skill, skillIndex) => {
+    const runeFiles = buildRuneSkillPayload(skill.folder || skill.name) || { runes: [], descriptionImages: [] };
+    const runes = (skill.runes || []).map((rune, runeIndex) => {
+      const autoRune = runeFiles.runes?.[runeIndex];
+      const next = {
+        ...rune,
+        order: runeIndex,
+        imageRel: autoRune?.image?.rel || '',
+        description: (rune.description || []).map((block, blockIndex) => {
+          const b = { ...block };
+          if (b.type === 'effect' && !b.imageRel) {
+            b.imageRel = autoRune?.descriptionImages?.[blockIndex]?.rel || runeFiles.descriptionImages?.[blockIndex]?.rel || '';
+          }
+          return b;
+        })
+      };
+      return next;
+    });
+    const firstImage = runeFiles.images?.[0]?.rel || '';
+    return {
+      ...skill,
+      order: skillIndex,
+      imageRel: firstImage,
+      runes
+    };
+  });
+
+  return sanitizeSungSkillsCatalog({ version: 1, skills: seeded });
+}
+
+function readSungSkillsCatalog({ migrate = true } = {}) {
+  const raw = getGlobal(SUNG_SKILLS_KEY);
+  if (raw && typeof raw === 'object' && Array.isArray(raw.skills)) {
+    return sanitizeSungSkillsCatalog(raw);
+  }
+
+  if (!migrate) return sanitizeSungSkillsCatalog({ version: 1, skills: [] });
+
+  const seeded = seedSungSkillsCatalog();
+  return writeSungSkillsCatalog(seeded);
+}
+
+function writeSungSkillsCatalog(catalog) {
+  const clean = sanitizeSungSkillsCatalog(catalog);
+  for (const skill of clean.skills) {
+    if (!skill.folder) continue;
+    try {
+      ensureDirSync(resolveInCategory('Rune', skill.folder));
+    } catch (_) {}
+  }
+  setGlobal(SUNG_SKILLS_KEY, clean);
+  return clean;
+}
+
+function findSungSkillIndex(catalog, id) {
+  return catalog.skills.findIndex((skill) => String(skill.id) === String(id));
+}
+
+function findSungRuneIndex(skill, id) {
+  return (skill.runes || []).findIndex((rune) => String(rune.id) === String(id));
+}
+
+function reorderByIds(items, ids) {
+  const order = Array.isArray(ids) ? ids.map((id) => String(id)) : [];
+  const byId = new Map(items.map((item) => [String(item.id), item]));
+  const out = [];
+  const seen = new Set();
+  for (const id of order) {
+    if (!byId.has(id) || seen.has(id)) continue;
+    seen.add(id);
+    out.push(byId.get(id));
+  }
+  for (const item of items) {
+    if (seen.has(String(item.id))) continue;
+    out.push(item);
+  }
+  return out.map((item, index) => ({ ...item, order: index }));
+}
+
+function moveItem(items, id, direction) {
+  const arr = items.slice();
+  const idx = arr.findIndex((item) => String(item.id) === String(id));
+  const delta = String(direction || '').toLowerCase() === 'down' ? 1 : -1;
+  const next = idx + delta;
+  if (idx < 0 || next < 0 || next >= arr.length) return arr.map((item, index) => ({ ...item, order: index }));
+  const tmp = arr[idx];
+  arr[idx] = arr[next];
+  arr[next] = tmp;
+  return arr.map((item, index) => ({ ...item, order: index }));
+}
+
+function applySungSkillsAdminAction(body) {
+  const action = String(body?.action || 'saveAll').trim();
+  let catalog = readSungSkillsCatalog();
+
+  if (action === 'saveAll') {
+    return writeSungSkillsCatalog(body.catalog || body);
+  }
+
+  if (action === 'addSkill') {
+    const skill = body.skill || {};
+    catalog.skills.push({
+      ...skill,
+      order: catalog.skills.length
+    });
+    return writeSungSkillsCatalog(catalog);
+  }
+
+  if (action === 'updateSkill') {
+    const id = String(body.id || body.skill?.id || '');
+    const idx = findSungSkillIndex(catalog, id);
+    if (idx < 0) throw new Error('skill_not_found');
+    catalog.skills[idx] = {
+      ...catalog.skills[idx],
+      ...(body.skill || {}),
+      id: catalog.skills[idx].id,
+      order: catalog.skills[idx].order,
+      runes: catalog.skills[idx].runes
+    };
+    return writeSungSkillsCatalog(catalog);
+  }
+
+  if (action === 'removeSkill') {
+    const id = String(body.id || '');
+    catalog.skills = catalog.skills.filter((skill) => String(skill.id) !== id);
+    return writeSungSkillsCatalog(catalog);
+  }
+
+  if (action === 'reorderSkills') {
+    if (Array.isArray(body.order)) catalog.skills = reorderByIds(catalog.skills, body.order);
+    else catalog.skills = moveItem(catalog.skills, body.id, body.direction);
+    return writeSungSkillsCatalog(catalog);
+  }
+
+  const skillId = String(body.skillId || body.skill?.id || '');
+  const skillIdx = findSungSkillIndex(catalog, skillId);
+  if (skillIdx < 0) throw new Error('skill_not_found');
+  const skill = catalog.skills[skillIdx];
+
+  if (action === 'addRune') {
+    skill.runes.push({
+      ...(body.rune || {}),
+      order: skill.runes.length
+    });
+    return writeSungSkillsCatalog(catalog);
+  }
+
+  if (action === 'updateRune') {
+    const runeId = String(body.runeId || body.rune?.id || '');
+    const runeIdx = findSungRuneIndex(skill, runeId);
+    if (runeIdx < 0) throw new Error('rune_not_found');
+    skill.runes[runeIdx] = {
+      ...skill.runes[runeIdx],
+      ...(body.rune || {}),
+      id: skill.runes[runeIdx].id,
+      order: skill.runes[runeIdx].order
+    };
+    return writeSungSkillsCatalog(catalog);
+  }
+
+  if (action === 'removeRune') {
+    const runeId = String(body.runeId || '');
+    skill.runes = skill.runes.filter((rune) => String(rune.id) !== runeId);
+    return writeSungSkillsCatalog(catalog);
+  }
+
+  if (action === 'reorderRunes') {
+    if (Array.isArray(body.order)) skill.runes = reorderByIds(skill.runes || [], body.order);
+    else skill.runes = moveItem(skill.runes || [], body.runeId, body.direction);
+    return writeSungSkillsCatalog(catalog);
+  }
+
+  throw new Error('unknown_action');
 }
 
 function applyPictureOrder(names, category) {
@@ -12008,6 +12616,112 @@ router.get('/api/public/hweapon-skins', (req, res) => {
   }
 });
 
+router.get('/api/public/sung-skills', (req, res) => {
+  res.set('Cache-Control', 'no-store');
+
+  try {
+    const catalog = readSungSkillsCatalog({ migrate: true });
+    return res.json({ ok: true, catalog: hydrateSungSkillsCatalog(catalog) });
+  } catch (e) {
+    console.error('[public:sung-skills] error', e);
+    return res.status(500).json({ ok: false, error: 'internal' });
+  }
+});
+
+router.post(
+  '/api/admin/sung-skills',
+  requireAdmin,
+  require('express').json({ limit: '2mb' }),
+  (req, res) => {
+    res.set('Cache-Control', 'no-store');
+
+    try {
+      const catalog = applySungSkillsAdminAction(req.body || {});
+      return res.json({ ok: true, catalog: hydrateSungSkillsCatalog(catalog) });
+    } catch (e) {
+      const msg = String(e?.message || 'bad_request');
+      const status = ['skill_not_found', 'rune_not_found', 'unknown_action'].includes(msg) ? 400 : 500;
+      if (status >= 500) console.error('[admin:sung-skills] error', e);
+      return res.status(status).json({ ok: false, error: msg });
+    }
+  }
+);
+
+router.get('/api/public/sung-skills/runes/:skill', (req, res) => {
+  res.set('Cache-Control', 'no-store');
+
+  try {
+    const item = buildRuneSkillPayload(req.params.skill, { mainCount: req.query?.mainCount });
+    if (!item) {
+      return res.status(404).json({ ok: false, error: 'skill_not_found', skill: String(req.params.skill || '') });
+    }
+    return res.json({ ok: true, skill: item });
+  } catch (e) {
+    const status = String(e?.message || '') === 'bad_path' ? 400 : 500;
+    return res.status(status).json({ ok: false, error: status === 400 ? 'bad_path' : 'internal' });
+  }
+});
+
+router.get('/api/public/sung-skills/runes', (req, res) => {
+  res.set('Cache-Control', 'no-store');
+
+  try {
+    const requestedSkill = String(req.query?.skill || req.query?.folder || '').trim();
+    const mainCount = req.query?.mainCount;
+
+    if (requestedSkill) {
+      const item = buildRuneSkillPayload(requestedSkill, { mainCount });
+      if (!item) {
+        return res.status(404).json({ ok: false, error: 'skill_not_found', skill: requestedSkill });
+      }
+      return res.json({ ok: true, skill: item });
+    }
+
+    const dir = categoryRoot('Rune');
+    const rawItems = sortPictureItems(listFilesRecursive(dir, dir), 'Rune');
+    const flat = [];
+    const folders = {};
+
+    for (const item of rawItems) {
+      const rel = String(item?.rel || '').replace(/\\/g, '/');
+      if (!rel) continue;
+
+      const parts = rel.split('/');
+      const fileName = parts.pop() || '';
+      const payload = {
+        rel,
+        name: fileName,
+        baseName: path.parse(fileName).name,
+        key: normalizePictureToken(fileName),
+        url: picturePublicUrl('Rune', rel),
+        size: item.size || 0,
+        mtimeMs: item.mtimeMs || 0
+      };
+
+      if (parts.length) {
+        const folder = parts.join('/');
+        if (!folders[folder]) folders[folder] = [];
+        folders[folder].push(payload);
+      } else {
+        flat.push(payload);
+      }
+    }
+
+    const index = buildRuneSkillsIndex({ mainCount });
+
+    return res.json({
+      ok: true,
+      flat,
+      folders,
+      skills: index.skills,
+      bySkill: index.bySkill
+    });
+  } catch (e) {
+    console.error('[public:sung-skills:runes] error', e);
+    return res.json({ ok: true, flat: [], folders: {}, skills: [], bySkill: {} });
+  }
+});
+
 router.get('/api/admin/pictures/subtabs', requireAdmin, (req, res) => {
   res.set('Cache-Control', 'no-store');
 
@@ -12020,7 +12734,9 @@ router.get('/api/admin/pictures/subtabs', requireAdmin, (req, res) => {
       return res.json({ ok: true, category, sourceCategory: null, subtabs: [] });
     }
 
-    const names = listDirectPictureBaseNames(sourceCategory);
+    const names = category === 'Rune'
+      ? listDirectPictureFolderNames(sourceCategory)
+      : listDirectPictureBaseNames(sourceCategory);
     const subtabs = applyPictureOrder(names, sourceCategory);
     return res.json({ ok: true, category, sourceCategory, subtabs });
   } catch (e) {
